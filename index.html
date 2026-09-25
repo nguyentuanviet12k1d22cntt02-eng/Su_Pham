@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khóa Đào Tạo AI Trong Giáo Dục Đại Học | Giáo Trình 16 Buổi & Dữ Liệu Thực Hành</title>
+  
+  <!-- Modern Typography (Inter & JetBrains Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Modular Stylesheets (frontend-design compliant) -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/course.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-area">
+        <div style="background-color: var(--academic-navy); color: #ffffff; width: 42px; height: 42px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        </div>
+        <div class="brand-title">
+          <span>AI TRONG GIÁO DỤC ĐẠI HỌC</span>
+          <span class="brand-subtitle">Cổng Giáo Trình & Dữ Liệu Thực Hành Cho Giảng Viên</span>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li>
+            <a href="#curriculum" class="nav-link active" data-view="curriculum">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Lộ Trình 16 Buổi
+            </a>
+          </li>
+          <li>
+            <a href="#datasets" class="nav-link" data-view="datasets">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              Kho Dữ Liệu Thực Hành
+            </a>
+          </li>
+          <li>
+            <a href="#tools" class="nav-link" data-view="tools-guide">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Cẩm Nang 5 Công Cụ
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Auth Role Status & Switcher -->
+      <div class="auth-status-wrap" id="authStatusWrap"></div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="course-hero">
+    <div class="container hero-layout">
+      <div class="hero-content">
+        <div class="hero-meta-badges">
+          <span class="tag tag-terracotta">Giáo Trình Sư Phạm 4.0</span>
+          <span class="tag tag-navy">Chuẩn Bậc Đại Học</span>
+          <span class="tag tag-success">Đã Tích Hợp Dữ Liệu Thật</span>
+        </div>
+        <h1 class="hero-title">Ứng Dụng Bộ Công Cụ AI Trong Giảng Dạy Đại Học</h1>
+        <p class="hero-description">
+          Chương trình đào tạo thực chiến 16 buổi (mỗi buổi 3 giờ = 48 giờ) chuẩn Khung năng lực UNESCO (2024) và Báo cáo OECD (2026): Từ AI Literacy → AI Pedagogy → AI Knowledge → AI Workflow/Agent → AI-Powered Teaching Deck.
+        </p>
+      </div>
+
+      <!-- Quick Stats Card -->
+      <div class="hero-stats-card">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">16</span>
+            <span class="stat-label">Buổi học chuyên sâu</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">180'</span>
+            <span class="stat-label">Thời lượng / buổi</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">48h</span>
+            <span class="stat-label">Tổng thời lượng</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">60%</span>
+            <span class="stat-label">Tỷ lệ thực hành</span>
+          </div>
+        </div>
+
+        <div class="tools-stack">
+          <div class="tools-stack-title">Hệ thống công cụ thực hành:</div>
+          <div class="tools-badge-list">
+            <span class="tool-chip">ChatGPT</span>
+            <span class="tool-chip">Gemini</span>
+            <span class="tool-chip">NotebookLM</span>
+            <span class="tool-chip">Gamma</span>
+            <span class="tool-chip">Canva</span>
+            <span class="tool-chip">Make (No-code)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Filter Bar -->
+  <section class="filter-bar-wrap">
+    <div class="container filter-bar">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-tool="all">Tất cả 16 Buổi</button>
+        <button class="filter-btn" data-tool="ChatGPT">ChatGPT</button>
+        <button class="filter-btn" data-tool="Gemini">Gemini</button>
+        <button class="filter-btn" data-tool="NotebookLM">NotebookLM</button>
+        <button class="filter-btn" data-tool="Gamma">Gamma</button>
+        <button class="filter-btn" data-tool="Canva">Canva</button>
+        <button class="filter-btn" data-tool="Make">Make</button>
+      </div>
+
+      <div class="search-box">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="sessionSearchInput" class="search-input" placeholder="Tìm theo tên bài, công cụ, kỹ năng...">
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="container" style="flex: 1;">
+    
+    <!-- VIEW 1: CURRICULUM SECTION (12 SESSIONS - FULL WIDTH) -->
+    <section id="curriculumSection" class="curriculum-full-layout">
+      <!-- Horizontal Session Selector Navigation Bar -->
+      <nav class="session-horizontal-nav" id="sessionHorizontalNav" aria-label="Danh sách 12 buổi học">
+        <!-- Rendered dynamically by js/components/session-nav.js -->
+      </nav>
+
+      <!-- Full-Width Session Detail & Designer Canvas -->
+      <article class="session-detail-view full-width-view" id="sessionDetailView">
+        <!-- Rendered dynamically by js/components/session-view.js -->
+      </article>
+    </section>
+
+    <!-- VIEW 2: PRACTICE DATASETS HUB -->
+    <section id="practiceHubSection" class="practice-hub-section" style="display: none;">
+      <div class="hub-header">
+        <span class="tag tag-terracotta">Thư Viện Học Liệu Tích Hợp</span>
+        <h2 class="hub-title">Kho Dữ Liệu Thực Hành Cho Giảng Viên Đại Học</h2>
+        <p class="hub-sub">
+          Dữ liệu mẫu chân thực phục vụ việc kiểm thử các công cụ AI: từ bài tiểu luận mẫu 3 mức độ, bộ 40 câu trắc nghiệm, đề cương chi tiết đến hồ sơ Case Study thực tế.
+        </p>
+      </div>
+
+      <div class="datasets-grid" id="datasetsGridContainer">
+        <!-- Rendered dynamically by js/main.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 3: TOOLS GUIDE SECTION -->
+    <section id="toolsGuideSection" class="practice-hub-section" style="display: none;">
+      <div class="hub-header">
+        <span class="tag tag-navy">Cẩm Nang Ứng Dụng Sư Phạm</span>
+        <h2 class="hub-title">Bản Đồ Phân Vai 5 Công Cụ AI Cốt Lõi</h2>
+        <p class="hub-sub">
+          Định vị rõ ràng thế mạnh và cách phối hợp nhịp nhàng giữa 5 công cụ trong toàn bộ chu trình giảng dạy học phần đại học.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-lg);">
+        
+        <!-- Tool 1: ChatGPT -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <span class="tag tag-navy">Cố vấn học thuật</span>
+            <span style="font-weight: 700; color: var(--academic-navy);">ChatGPT</span>
+          </div>
+          <h3 class="data-card-title">Bộ Não Tư Duy & Lập Dàn Ý Học Thuật</h3>
+          <p class="data-card-desc">
+            Thế mạnh vượt trội trong việc lên ý tưởng nghiên cứu, phản biện đa chiều (Socratic Method), viết câu lệnh RTFC, và thiết kế Custom GPT trợ giảng riêng cho từng môn học.
+          </p>
+          <div class="data-card-meta">
+            <span>Ứng dụng: Soạn giáo án, lập đề cương, viết phản hồi học vụ, phản biện luận điểm.</span>
+          </div>
+        </div>
+
+        <!-- Tool 2: Gemini -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <span class="tag tag-navy">Xử lý đa phương tiện</span>
+            <span style="font-weight: 700; color: var(--academic-navy);">Gemini</span>
+          </div>
+          <h3 class="data-card-title">Xử Lý Tài Liệu Dài & Chấm Thi Trắc Nghiệm / Ảnh</h3>
+          <p class="data-card-desc">
+            Sở hữu cửa sổ ngữ cảnh cực lớn (hàng triệu token) và khả năng thị giác máy tính (Vision) xuất sắc. Đọc hiểu tài liệu nghiên cứu PDF 100 trang, chấm bài viết tay qua ảnh chụp và so khớp đề trắc nghiệm 40 câu.
+          </p>
+          <div class="data-card-meta">
+            <span>Ứng dụng: Đọc file PDF dài, chấm bài trắc nghiệm, đọc ảnh chữ viết tay của sinh viên.</span>
+          </div>
+        </div>
+
+        <!-- Tool 3: MagicSchool -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <span class="tag tag-terracotta">Xưởng học liệu</span>
+            <span style="font-weight: 700; color: var(--primary-color);">MagicSchool AI</span>
+          </div>
+          <h3 class="data-card-title">Hộp Công Cụ Sư Phạm Chuyên Biệt</h3>
+          <p class="data-card-desc">
+            Hơn 60+ biểu mẫu chuẩn sư phạm: Tạo bảng Rubric 4-5 mức độ theo chuẩn quốc tế, ngân hàng câu hỏi Bloom, tạo bài mẫu (Exemplar) và kịch bản tình huống (Case Study) cho sinh viên thảo luận.
+          </p>
+          <div class="data-card-meta">
+            <span>Bản Free: Dùng miễn phí vĩnh viễn các công cụ cốt lõi (Rubric Generator, Writing Feedback).</span>
+          </div>
+        </div>
+
+        <!-- Tool 4: Alayna AI -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <span class="tag tag-terracotta">Trợ lý chấm bài</span>
+            <span style="font-weight: 700; color: var(--primary-color);">Alayna AI</span>
+          </div>
+          <h3 class="data-card-title">Chấm Điểm Theo Rubric & Đồng Hành Trên Google Docs</h3>
+          <p class="data-card-desc">
+            Tích hợp trực tiếp vào quy trình làm việc trên Google Docs / Chrome. Chuyên sâu về chấm tiểu luận, phân tích bài làm so với Rubric và sinh lời nhận xét cá nhân hóa theo mô hình Glows & Grows.
+          </p>
+          <div class="data-card-meta">
+            <span>Ứng dụng: Chấm bài tập lớn, nhận xét luận văn, soạn thảo học liệu ngay trên Google Docs.</span>
+          </div>
+        </div>
+
+        <!-- Tool 5: Gamma -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <span class="tag tag-success">Trực quan hóa</span>
+            <span style="font-weight: 700; color: var(--success-color);">Gamma App</span>
+          </div>
+          <h3 class="data-card-title">Thiết Kế Slide Bài Giảng Hiện Đại Trong 60 Giây</h3>
+          <p class="data-card-desc">
+            Chuyển hóa dàn ý Markdown từ ChatGPT/Gemini thành bộ slide thuyết trình tương tác, chuẩn mỹ thuật cao. Tự động bố cục hình ảnh, thẻ bài tập và xuất file PowerPoint (PPTX) dễ dàng.
+          </p>
+          <div class="data-card-meta">
+            <span>Ứng dụng: Soạn slide bài giảng từng tuần, báo cáo khoa học, trình chiếu bài tập nhóm.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal Preview Window -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+          <span class="modal-title" id="modalTitle">Chi tiết Dữ liệu Thực hành</span>
+        </div>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Đóng cửa sổ">
+          <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="modal-body" id="modalBody">
+        <!-- Rendered by js/main.js -->
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" onclick="closeModal()">Đóng lại</button>
+        <button class="btn btn-primary btn-sm" id="modalCopyBtn">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Sao chép toàn bộ dữ liệu
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Lightbox Modal (Xem Ảnh Độ Nét Cao) -->
+  <div class="modal-backdrop image-lightbox-backdrop" id="imageLightboxBackdrop">
+    <div class="image-lightbox-content">
+      <div class="image-lightbox-header">
+        <div style="display: flex; align-items: center; gap: 8px; min-width: 0;">
+          <svg class="icon" viewBox="0 0 24 24" style="color: var(--academic-navy); flex-shrink: 0;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          <span class="image-lightbox-title" id="imageLightboxTitle">Xem sơ đồ chi tiết</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+          <a id="imageLightboxOpenTab" href="#" target="_blank" class="btn btn-secondary btn-sm" title="Mở ảnh kích thước gốc trong tab mới">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            Mở tab mới
+          </a>
+          <button class="modal-close-btn" id="imageLightboxCloseBtn" onclick="window.closeImageLightbox()" aria-label="Đóng phóng to">
+            <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+      <div class="image-lightbox-body">
+        <img id="imageLightboxImg" src="" alt="Sơ đồ chi tiết phóng to" />
+      </div>
+      <div class="image-lightbox-caption" id="imageLightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="appToast" class="toast"></div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Khóa Đào Tạo AI Sư Phạm Đại Học 4.0</strong> — Biên soạn cho giảng viên đại học.
+      </div>
+      <div style="font-size: 0.8rem; color: var(--text-muted);">
+        Tuân thủ tiêu chuẩn thiết kế học thuật • Không sử dụng AI Slop icons • Tối ưu trải nghiệm giảng dạy.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Modules -->
+  <script src="js/core/icons.js"></script>
+  <script src="js/core/state.js"></script>
+  <script src="js/core/utils.js"></script>
+  <script src="js/core/auth.js"></script>
+  <script src="js/core/drag-drop.js"></script>
+
+  <!-- Central Registry -->
+  <script src="js/data/registry.js"></script>
+
+  <!-- Modular Datasets -->
+  <script src="js/data/datasets/session1-datasets.js"></script>
+  <script src="js/data/datasets/essays-data.js"></script>
+  <script src="js/data/datasets/rubric-data.js"></script>
+  <script src="js/data/datasets/exam-data.js"></script>
+  <script src="js/data/datasets/syllabus-data.js"></script>
+  <script src="js/data/datasets/case-study-data.js"></script>
+  <script src="js/data/datasets/gamma-data.js"></script>
+  <script src="js/data/datasets/notebooklm-data.js"></script>
+
+  <!-- Modular Sessions (1 to 16) -->
+  <script src="js/data/sessions/session-01.js"></script>
+  <script src="js/data/sessions/session-02.js"></script>
+  <script src="js/data/sessions/session-03.js"></script>
+  <script src="js/data/sessions/session-04.js"></script>
+  <script src="js/data/sessions/session-05.js"></script>
+  <script src="js/data/sessions/session-06.js"></script>
+  <script src="js/data/sessions/session-07.js"></script>
+  <script src="js/data/sessions/session-08.js"></script>
+  <script src="js/data/sessions/session-09.js"></script>
+  <script src="js/data/sessions/session-10.js"></script>
+  <script src="js/data/sessions/session-11.js"></script>
+  <script src="js/data/sessions/session-12.js"></script>
+  <script src="js/data/sessions/session-13.js"></script>
+  <script src="js/data/sessions/session-14.js"></script>
+  <script src="js/data/sessions/session-15.js"></script>
+  <script src="js/data/sessions/session-16.js"></script>
+
+  <!-- UI Components -->
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/exercise-view.js"></script>
+  <script src="js/components/content-editor.js"></script>
+  <script src="js/components/session-view.js"></script>
+  <script src="js/components/session-nav.js"></script>
+  <script src="js/components/dataset-hub.js"></script>
+
+  <!-- App Bootstrap -->
+  <script src="js/app.js"></script>
+</body>
+</html>
