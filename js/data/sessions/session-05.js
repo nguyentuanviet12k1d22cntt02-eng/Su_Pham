@@ -53,17 +53,19 @@ Hãy liệt kê 05 thuật ngữ khó nhất và:
 - Đưa ra một ví dụ so sánh gần gũi trong đời sống.
 - Ghi rõ thuật ngữ đó xuất hiện ở trang mấy trong tài liệu.`;
 
-  const LIB_P5 = `Tôi có Dàn ý bài giảng vừa trích xuất từ tài liệu nguồn như sau:
+  const LIB_P5 = `Dựa vào Dàn ý bài giảng tôi vừa trích xuất từ tài liệu nguồn:
 [DÁN DÀN Ý TỪ NOTEBOOKLM VÀO ĐÂY]
 
-Bạn hãy đóng vai trò là Giám đốc Nghệ thuật & Chuyên gia Thiết kế Bài giảng (Instructional & Visual Designer). Hãy chuyển hóa dàn ý trên thành một MASTER PROMPT TẠO SLIDE CHUYÊN NGHIỆP:
-1. Định hình Phong cách mỹ thuật (Visual Style): Tông màu chủ đạo, bố cục thẻ trực quan, tỷ lệ hình ảnh/chữ hài hòa.
-2. Chi tiết từng slide:
-   - Tiêu đề ngắn gọn (dưới 8 từ).
-   - 3 luận điểm cốt lõi trên màn hình.
-   - Gợi ý PROMPT TẠO ẢNH AI (Image Generation Prompt) chi tiết cho từng slide (mô tả rõ bối cảnh, ánh sáng, góc máy, phong cách ảnh).
-   - Lời giảng viên gợi ý (Speaker Notes).
-3. Tối ưu câu lệnh để tôi có thể dán trực tiếp vào Gamma App và tiếp tục hoàn thiện trên NotebookLM.`;
+Hãy chuyển hóa thành NỘI DUNG SLIDE HOÀN CHỈNH ĐỂ DÁN THẲNG VÀO CÔNG CỤ TẠO SLIDE (GAMMA/CANVA):
+QUY TẮC BẮT BUỘC:
+- TUYỆT ĐỐI KHÔNG viết lời chào, KHÔNG viết lý thuyết sư phạm, KHÔNG tạo các mục vai trò hay bảng màu rườm rà.
+- CHỈ xuất ra đúng các slide theo mẫu ngắn gọn dưới đây:
+  --- SLIDE [Số]: [Tiêu đề slide dưới 8 từ]
+  - [Ý 1: dưới 15 từ, rõ ý]
+  - [Ý 2: dưới 15 từ, rõ ý]
+  - [Ý 3: dưới 15 từ, rõ ý]
+  * Gợi ý hình ảnh: [Mô tả ngắn gọn 1 câu về bức ảnh AI cần vẽ, phong cách ảnh tư liệu báo chí chân thực hoặc infographic]
+  * Lời giảng (Speaker Notes): [2 câu ngắn gọn giải thích dễ hiểu]`;
 
   // CÂU LỆNH ĐO NI ĐÓNG GIÀY CHO SGK ĐỊA LÍ 11 (BÀI TẬP THỰC HÀNH MẪU)
   const PROMPT_DIALI_OUTLINE = `Dựa hoàn toàn vào nội dung "Bài 2: Toàn cầu hoá và khu vực hoá kinh tế" (từ trang 9 đến trang 12) trong cuốn sách giáo khoa Địa lí 11 tôi vừa nạp:
@@ -87,23 +89,23 @@ Hãy soạn cho tôi Dàn ý Slide trình chiếu gồm đúng 8 slide cho tiế
 
 LƯU Ý: Tuyệt đối chỉ lấy số liệu và luận điểm có trong các trang 9 - 12 của sách, không tự chế thêm số liệu.`;
 
-  const PROMPT_CHATGPT_MASTER = `Tôi có Dàn ý 8 slide bài giảng "Bài 2: Toàn cầu hoá và khu vực hoá kinh tế" vừa trích xuất chuẩn xác từ SGK Địa lí 11 (có kèm số trang và lời giảng viên) như sau:
+  const PROMPT_CHATGPT_MASTER = `Dựa vào Dàn ý 8 slide bài giảng "Bài 2: Toàn cầu hoá và khu vực hoá kinh tế" tôi vừa trích xuất từ SGK Địa lí 11:
 [DÁN TOÀN BỘ KẾT QUẢ DÀN Ý 8 SLIDE VỪA COPY TỪ NOTEBOOKLM VÀO ĐÂY]
 
-Bạn hãy đóng vai trò là Giám đốc Nghệ thuật & Chuyên gia Thiết kế Bài giảng (Instructional & Visual Designer). Hãy chuyển hóa dàn ý trên thành một MASTER PROMPT TẠO SLIDE CHUYÊN NGHIỆP để tôi mang sang Gamma App và NotebookLM:
+Nhiệm vụ của bạn: Hãy viết lại thành NỘI DUNG 8 SLIDE HOÀN CHỈNH ĐỂ TÔI COPY DÁN THẲNG VÀO CÔNG CỤ TẠO SLIDE GAMMA APP.
 
-1. Định hình phong cách thị giác tổng thể (Overall Visual Style):
-   - Bảng màu chủ đạo: Tông màu học thuật địa lí hiện đại (Deep Navy #0f172a, Teal #0d9488, Gold Accent).
-   - Phong cách hình ảnh: Ảnh chụp tư liệu báo chí chân thực (Documentary Photography) kết hợp Đồ họa thông tin (Modern Infographic).
-   - Bố cục: Dạng thẻ (Cards) thoáng đãng, tối đa 3 ý/slide, nhiều khoảng trống trực quan.
+QUY TẮC BẮT BUỘC ĐỂ TRÁNH TRẢ LỜI DÀI DÒNG:
+1. TUYỆT ĐỐI KHÔNG viết lời chào, KHÔNG giải thích lý thuyết sư phạm, KHÔNG tạo các mục vai trò, bảng màu hay quy tắc rườm rà.
+2. CHỈ XUẤT RA DUY NHẤT NỘI DUNG ĐÚNG 8 SLIDE theo định dạng ngắn gọn dưới đây:
 
-2. Chi tiết từng slide (cho đủ 8 slide):
-   - Tiêu đề slide ngắn gọn (dưới 8 từ).
-   - 3 luận điểm cốt lõi trên màn hình.
-   - PROMPT TẠO ẢNH AI CHO SLIDE NÀY (Image Prompt bằng tiếng Anh & tiếng Việt): Mô tả rõ bối cảnh, đối tượng, ánh sáng và góc chụp (ví dụ: Slide 2 mô tả hình ảnh container cảng biển quốc tế nhộn nhịp nhìn từ trên cao, phong cách documentary photography).
-   - Lời giảng viên gợi ý (Speaker Notes) súc tích.
+--- SLIDE [Số]: [Tiêu đề ngắn gọn dưới 8 từ]
+- [Ý 1: dưới 15 từ, cô đọng]
+- [Ý 2: dưới 15 từ, cô đọng]
+- [Ý 3: dưới 15 từ, cô đọng]
+* Gợi ý hình ảnh: [Mô tả ngắn gọn 1 câu về bức ảnh AI cần vẽ, theo phong cách ảnh tư liệu báo chí chân thực hoặc infographic hiện đại, không dùng hình hoạt hình hay viễn tưởng]
+* Lời giảng (Speaker Notes): [2 câu ngắn gọn giải thích ví dụ thực tế cho sinh viên]
 
-3. Tối ưu cấu trúc câu lệnh để tôi có thể dán trực tiếp vào ô mô tả của Gamma App để AI tự sinh slide kèm ảnh minh họa và đối chiếu số trang trên NotebookLM.`;
+Hãy bắt đầu viết trực tiếp từ Slide 1 đến Slide 8 ngay dưới đây:`;
 
   const PROMPT_DIALI_DISCUSSION = `Từ các số liệu và tình huống trong Bài 2 sách Địa lí 11 (trang 9 - 12), hãy gợi ý 02 câu hỏi tình huống thực tế để tôi cho sinh viên làm việc nhóm:
 - Tình huống 1: Một doanh nghiệp dệt may Việt Nam trước làn sóng toàn cầu hoá cần làm gì để cạnh tranh?
@@ -430,18 +432,18 @@ Kèm theo đáp án gợi ý ngắn gọn (3 gạch đầu dòng) và chỉ rõ 
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <div style="display: flex; align-items: center; gap: 10px;">
                 <span style="background: #d97706; color: #ffffff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">3</span>
-                <span style="font-weight: 700; color: #0f172a; font-size: 1rem;">Bước 3 (10 phút): Mang Dàn ý sang ChatGPT tạo Master Prompt (Kèm Phong Cách Tạo Ảnh AI)</span>
+                <span style="font-weight: 700; color: #0f172a; font-size: 1rem;">Bước 3 (10 phút): Dùng ChatGPT Chuyển Dàn Ý Thành 8 Slide Kèm Gợi Ý Ảnh AI (Gọn Gàng, Chống Dài Dòng)</span>
               </div>
               <button class="btn btn-primary btn-sm" onclick="window.copyToClipboard(\`${PROMPT_CHATGPT_MASTER}\`)">
                 ${ICONS.copy || ''} Sao chép lệnh ChatGPT
               </button>
             </div>
             <p style="font-size: 0.88rem; color: #334155; line-height: 1.6; margin: 0 0 10px 0;">
-              Mở <code>chatgpt.com</code>, dán câu lệnh dưới đây (nhớ dán kèm Dàn ý 8 slide vừa lấy từ NotebookLM ở Bước 2) để ChatGPT đóng vai <strong>Art Director & Visual Designer</strong>:
+              Mở <code>chatgpt.com</code>, dán câu lệnh dưới đây kèm Dàn ý 8 slide vừa lấy từ NotebookLM ở Bước 2. Câu lệnh này đã được khóa chặt quy tắc để ChatGPT <strong>chỉ xuất ra đúng nội dung 8 slide súc tích</strong> (không sinh ra lý thuyết dài dòng hay các mục lan man), sẵn sàng copy dán thẳng vào Gamma:
             </p>
             <pre style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 14px; font-size: 0.84rem; color: #78350f; white-space: pre-wrap; font-family: inherit; margin: 0 0 10px 0;">${PROMPT_CHATGPT_MASTER}</pre>
             <div style="background: #fefce8; border: 1px solid #fef08a; border-radius: 6px; padding: 10px 14px; font-size: 0.84rem; color: #854d0e;">
-              <strong>Điểm vượt trội:</strong> ChatGPT sẽ bổ sung cho từng slide một <em>Image Generation Prompt</em> cụ thể (ví dụ: góc chụp drone tàu chở container trên đại dương hoàng hôn, bản đồ chuỗi cung ứng toàn cầu 3D...), giúp việc tạo slide ở bước sau có hình ảnh đồng bộ và đẹp mắt. Hãy <strong>sao chép toàn bộ Master Prompt</strong> mà ChatGPT vừa tạo ra!
+              <strong>Điểm vượt trội:</strong> ChatGPT sẽ trả về đúng 8 khối slide sạch sẽ: Mỗi slide có đúng 3 gạch đầu dòng + 1 dòng gợi ý ảnh AI thực tế + 2 câu lời giảng ngắn. Thầy/Cô chỉ cần <strong>sao chép toàn bộ kết quả này</strong> để dán vào Gamma App và NotebookLM ở Bước 4!
             </div>
           </div>
 
