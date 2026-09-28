@@ -583,6 +583,7 @@
 }
 
 .article-prompt-code {
+  background-color: #0f172a;
   color: #f1f5f9;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.88rem;
@@ -591,6 +592,26 @@
   margin: 0;
   white-space: pre-wrap;
   word-break: break-word;
+  scrollbar-width: thin;
+  scrollbar-color: #334155 #0f172a;
+}
+
+.article-prompt-code::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.article-prompt-code::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+.article-prompt-code::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+.article-prompt-code::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }
 
 /* Comparison Matrix Table */

@@ -1,530 +1,736 @@
 /**
  * SESSION 3: AI THIẾT KẾ BÀI GIẢNG VÀ HỌC PHẦN (LESSON PLAN & COURSE DESIGN)
  * (js/data/sessions/session-03.js)
- * Căn cứ theo: "Lộ trình đào tạo 16 buổi: AI ứng dụng trong giảng dạy đại học"
- * NỘI DUNG ĐƯỢC VIẾT TRỰC TIẾP TRÊN TRANG (Direct Article Layout).
+ * TÌNH HUỐNG THỰC HÀNH XUYÊN SUỐT: Sách Giáo Khoa Địa Lí 11 — Bộ Kết Nối Tri Thức Với Cuộc Sống
+ * Trọng tâm bài mẫu: Bài 2: Toàn cầu hoá và khu vực hoá kinh tế (Trang 9 – 12)
+ * Cấu trúc chuẩn: I. MỤC TIÊU — III. TIẾN TRÌNH DẠY HỌC — IV. HƯỚNG DẪN VỀ NHÀ VÀ DẶN DÒ
  */
 
 (function() {
-  // PROMPTS FOR UPGRADE EXPERIMENT
-  const PROMPT_UPGRADE_BEFORE = `Hãy soạn cho tôi một giáo án bài giảng 90 phút về chủ đề "Quản trị Rủi ro Tín dụng trong Ngân hàng Thương mại" dành cho sinh viên.`;
+  // CÂU LỆNH THỰC NGHIỆM ĐỐI CHIẾU TRÊN SGK ĐỊA LÍ 11
+  const PROMPT_UPGRADE_BEFORE = `Hãy soạn cho tôi một giáo án bài giảng 90 phút Bài 2: "Toàn cầu hoá và khu vực hoá kinh tế" môn Địa lí 11 sách Kết nối tri thức.`;
 
   const PROMPT_UPGRADE_AFTER = `BỐI CẢNH & VAI TRÒ:
-Bạn là Chuyên gia Cố vấn Phương pháp Sư phạm Đại học và Thiết kế Chương trình Giảng dạy Tích cực (Active Learning Curriculum Designer). 
-Tôi là Giảng viên phụ trách môn "Quản trị Ngân hàng Thương mại", Khoa Tài chính - Ngân hàng, Trường Đại học Kinh tế TP.HCM.
+Bạn là chuyên gia thiết kế bài dạy tương tác môn Địa lí.
+Tôi dạy môn Địa lí 11, bộ sách Kết Nối Tri Thức Với Cuộc Sống.
 
-ĐỐI TƯỢNG NGƯỜI HỌC:
-Sinh viên năm 3 chuyên ngành Tài chính - Ngân hàng. Sinh viên đã học môn Tiền tệ Ngân hàng và Kế toán Ngân hàng, nắm được lý thuyết tín dụng cơ bản nhưng chưa có kinh nghiệm thực tế trong việc đọc hồ sơ báo cáo tài chính doanh nghiệp để thẩm định rủi ro vỡ nợ, dễ nhầm lẫn giữa rủi ro tín dụng và rủi ro thanh khoản.
+BÀI HỌC CỤ THỂ:
+Bài 2: Toàn cầu hoá và khu vực hoá kinh tế (Trang 9 – 12 trong SGK Địa lí 11).
 
-MỤC TIÊU BÀI DẠY (CLO THEO THANG BLOOM SỬA ĐỔI):
-1. Phân tích được 5 yếu tố trong mô hình 5C thẩm định tín dụng trên một hồ sơ doanh nghiệp thực tế (Bậc 4 - Analyze).
-2. Đánh giá được mức độ rủi ro và ra quyết định chấp thuận / từ chối cấp hạn mức tín dụng có kèm điều kiện bảo đảm (Bậc 5 - Evaluate).
+ĐỐI TƯỢNG HỌC SINH:
+Học sinh lớp 11. Các em đã học xong Bài 1 về các nhóm nước phát triển và đang phát triển. Học sinh hay nhầm lẫn giữa "Toàn cầu hoá" (mở rộng trên phạm vi toàn thế giới) và "Khu vực hoá" (chỉ liên kết giữa các nước gần nhau như ASEAN, EU).
 
-NHIỆM VỤ THIẾT KẾ KẾ HOẠCH BÀI DẠY 90 PHÚT THEO MÔ HÌNH 3 CHẶNG TÍCH CỰC:
-Hãy thiết kế Kế hoạch bài dạy chi tiết gồm 3 chặng:
+MỤC TIÊU BÀI DẠY (DÙNG ĐỘNG TỪ HÀNH ĐỘNG CỤ THỂ):
+1. Phân tích được 4 biểu hiện của toàn cầu hoá kinh tế qua chuỗi sản xuất 1 sản phẩm quen thuộc (ví dụ chiếc điện thoại thông minh hoặc hạt cà phê xuất khẩu).
+2. So sánh và phân biệt rõ sự khác nhau giữa Toàn cầu hoá và Khu vực hoá kinh tế.
+3. Đánh giá được cơ hội và thách thức của Việt Nam khi hội nhập kinh tế quốc tế.
 
-CHẶNG 1: TRƯỚC LỚP (PRE-CLASS - TỰ HỌC NỀN TẢNG):
-- Hướng dẫn tự học: 01 bài đọc 3 trang tóm lược chuẩn mực Basel II/III về rủi ro tín dụng.
-- Câu hỏi chẩn đoán: 03 câu hỏi trắc nghiệm kiểm tra nhanh kiến thức nền tảng để sinh viên làm trên LMS trước khi đến lớp.
+YÊU CẦU THIẾT KẾ 4 BƯỚC KHÁM PHÁ (90 PHÚT):
+1. Khởi động (10 phút): Tình huống chiếc điện thoại thông minh: "Thiết kế tại Mỹ, chip sản xuất tại Đài Loan, màn hình tại Hàn Quốc, lắp ráp tại Việt Nam". Câu hỏi tranh luận: Tại sao không quốc gia nào tự sản xuất từ A đến Z?
+2. Khám phá kiến thức (35 phút): Hướng dẫn học sinh khai thác số liệu và thông tin trang 9-11 SGK Địa lí 11 để tìm ra 4 biểu hiện của toàn cầu hoá.
+3. Luyện tập tại lớp (30 phút): Cặp ví dụ đối chiếu: Phân biệt rõ WTO (toàn cầu) với ASEAN/EU (khu vực). Xử lý tình huống nông sản Việt Nam khi xuất khẩu.
+4. Vận dụng thực tế (15 phút): Bài toán nhỏ: Nếu gia đình em kinh doanh hàng may mặc hoặc nông sản, toàn cầu hoá mang lại cơ hội gì và rủi ro gì?
 
-CHẶNG 2: TRONG LỚP (IN-CLASS - 90 PHÚT TƯƠNG TÁC SÂU):
-1. Khởi động & Kích hoạt (15 phút): 01 tình huống mở đầu gây sốc: "Nghịch lý một công ty xây dựng doanh thu ngàn tỷ nhưng bất ngờ mất khả năng thanh toán nợ vay ngân hàng sau 6 tháng". Câu hỏi kích hoạt tranh luận: "Chỉ số nào trên báo cáo tài chính đã phát tín hiệu cảnh báo sớm mà chuyên viên thẩm định bỏ qua?".
-2. Khám phá & Làm chủ kỹ thuật (30 phút): Giảng viên hướng dẫn kỹ thuật phân tích ma trận 5C và phân biệt rõ ranh giới giữa Rủi ro tín dụng (Credit Risk) và Rủi ro thanh khoản (Liquidity Risk).
-3. Thực hành giải quyết tình huống (35 phút): Chia lớp thành các tổ thẩm định tín dụng độc lập (3-4 sinh viên/nhóm), giải quyết 01 tình huống doanh nghiệp sản xuất xin vay bổ sung vốn lưu động 50 tỷ đồng.
-4. Đúc kết & Phản hồi sư phạm (10 phút): Đúc kết 3 nguyên tắc bất biến khi thẩm định tín dụng và phát hiện các lỗi ngộ nhận phổ biến.
+LƯU Ý:
+- Bám sát nội dung và bảng số liệu trang 9-12 SGK Địa lí 11 Kết nối tri thức.
+- Trình bày dạng bảng: Hoạt động | Thời gian | Việc người dạy làm | Việc người học làm | Sản phẩm cần nộp.`;
 
-CHẶNG 3: SAU LỚP (POST-CLASS - KHẮC SÂU & ĐÁNH GIÁ):
-- 01 bài tập phản tư cá nhân (Reflection): Sinh viên tự viết một bản ghi nhớ thẩm định tín dụng (Credit Memo) dài 500 từ bảo vệ quyết định của mình.
-- Tiêu chí đánh giá Rubric chấm điểm nhanh (Thang điểm 10).
+  // 6 CÂU LỆNH MẪU ÁP DỤNG TRỰC TIẾP CHO SGK ĐỊA LÍ 11
+  const LIB_P1 = `VAI TRÒ: Chuyên gia biên soạn mục tiêu bài học môn Địa lí theo chuẩn đo lường.
+BỐI CẢNH: Tôi đang dạy môn Địa lí 11 (Bộ Kết Nối Tri Thức Với Cuộc Sống).
+BÀI DẠY: Bài 2: Toàn cầu hoá và khu vực hoá kinh tế (Trang 9 – 12).
+NHIỆM VỤ: Hãy chuyển nội dung bài học thành 3 mục tiêu hành động cụ thể, đo lường được:
 
-RÀNG BUỘC & ĐỊNH DẠNG ĐẦU RA (CONSTRAINTS & OUTPUT):
-- Tuyệt đối không dùng lý thuyết sách giáo khoa chung chung, không đọc - chép thụ động.
-- Gắn nhãn [CẦN GIẢNG VIÊN THẨM ĐỊNH] tại những chỗ đưa ra số liệu tài chính, chỉ số đòn bẩy hoặc quy định pháp lý của Ngân hàng Nhà nước Việt Nam.
-- Trình bày dưới dạng bảng Markdown chi tiết: Thời lượng | Hoạt động Giảng viên | Hoạt động Sinh viên | Mục tiêu CLO tương ứng | Học liệu cần chuẩn bị.`;
+QUY TẮC:
+1. Bắt đầu bằng động từ hành động rõ ràng (như: Phân tích, So sánh, Đánh giá). Tuyệt đối không dùng từ mơ hồ như: "hiểu được", "nắm được".
+2. Phân rõ 3 mức: Mức 1 (Nêu được biểu hiện) &rarr; Mức 2 (Phân biệt được toàn cầu hoá và khu vực hoá) &rarr; Mức 3 (Đánh giá được cơ hội và thách thức của Việt Nam).
+3. Gợi ý 1 câu hỏi kiểm tra nhanh tương ứng với từng mục tiêu.`;
 
-  // 6 REUSABLE PROMPTS (PROMPT LIBRARY FOR SESSION 3)
-  const LIB_P1 = `VAI TRÒ: Chuyên gia Khảo thí và Kiểm định Chất lượng Giáo dục Đại học chuẩn AUN-QA.
-BỐI CẢNH: Tôi đang rà soát và thiết kế lại Chuẩn đầu ra bài học (CLO - Course Learning Outcomes) cho môn [Tên môn học], ngành [Tên ngành], dành cho sinh viên [Năm thứ mấy].
-NHIỆM VỤ: Hãy chuẩn hóa danh sách các mục tiêu học tập dưới đây sang Chuẩn đầu ra đo lường được theo Thang đo Bloom Sửa đổi (Bloom's Revised Taxonomy):
-[Dán danh sách mục tiêu thô hoặc nội dung các chương cần soạn CLO vào đây]
+  const LIB_P2 = `VAI TRÒ: Chuyên gia thiết kế bài dạy khám phá tích cực môn Địa lí 11.
+BỐI CẢNH: Dạy Bài 2: "Toàn cầu hoá và khu vực hoá kinh tế" (Trang 9-12 SGK Địa lí 11 Kết Nối Tri Thức), thời lượng 90 phút.
+MỤC TIÊU: Học sinh phân tích được 4 biểu hiện toàn cầu hoá và phân biệt được với khu vực hoá.
 
-QUY TẮC BẮT BUỘC:
-1. Mỗi CLO bắt đầu bằng 01 động từ hành vi có thể quan sát và đo lường định lượng được (ví dụ: Phân tích, So sánh, Đánh giá, Thiết kế, Giải thích; tuyệt đối không dùng các từ mơ hồ như: "hiểu được", "nắm được", "biết về", "có nhận thức").
-2. Phân loại rõ từng CLO thuộc bậc nào của thang Bloom (Bậc 1: Nhớ đến Bậc 6: Sáng tạo).
-3. Ứng với mỗi CLO, gợi ý 01 Phương pháp đánh giá (Assessment Method) và 01 Chỉ báo thực hiện (Performance Indicator) tương ứng.`;
+NHIỆM VỤ: Lập kế hoạch bài dạy theo tiến trình 4 hoạt động:
+1. Khởi động (10 phút): Một hình ảnh hoặc tình huống đời sống kích hoạt tò mò về sự phụ thuộc kinh tế giữa các quốc gia.
+2. Khám phá (35 phút): Chia trạm học tập để học sinh khai thác số liệu FDI, thương mại thế giới và công ty đa quốc gia từ trang 9-11 SGK.
+3. Luyện tập (30 phút): Bài tập thực hành nhóm phân biệt tổ chức WTO và ASEAN/EU.
+4. Vận dụng (15 phút): Bài tập liên hệ thực tế về xuất khẩu nông sản Việt Nam.
 
-  const LIB_P2 = `VAI TRÒ: Cố vấn Thiết kế Kịch bản Giảng dạy Đại học theo Phương pháp Sư phạm Tích cực (Active Learning).
-BỐI CẢNH: Tôi chuẩn bị lên lớp bài giảng [Thời lượng: 90 phút hoặc 180 phút] cho môn [Tên môn học], chủ đề: "[Tên chủ đề bài giảng]". Đối tượng là sinh viên [Năm thứ mấy, ngành học].
-CHUẨN ĐẦU RA CẦN ĐẠT: [Ghi 2-3 chuẩn đầu ra CLO chính của buổi học].
+ĐỊNH DẠNG: Bảng gồm: Hoạt động | Thời lượng | Việc người dạy làm | Việc người học làm | Sản phẩm nộp.`;
 
-NHIỆM VỤ: Thiết kế Kế hoạch bài dạy (Lesson Plan) toàn diện theo mô hình 3 chặng sư phạm:
-1. TRƯỚC LỚP (Pre-class): Nhiệm vụ sinh viên tự học ở nhà (đọc tài liệu gì, xem video gì, làm bài tập chẩn đoán nào trong bao nhiêu phút).
-2. TRONG LỚP (In-class): Phân bổ chi tiết các chặng lên lớp (Khởi động -> Khám phá tri thức -> Thực hành nhóm giải quyết bài toán -> Đúc kết & Đánh giá quá trình). Nêu rõ Hoạt động của Giảng viên và Hoạt động của Sinh viên để sinh viên không ngồi nghe thụ động quá 15 phút liên tục.
-3. SAU LỚP (Post-class): Nhiệm vụ củng cố, bài tập ứng dụng thực tế và phiếu phản tư (Reflection).
+  const LIB_P3 = `VAI TRÒ: Chuyên gia thiết kế tình huống sư phạm môn Địa lí.
+BỐI CẢNH: Dạy Bài 2 SGK Địa lí 11. Học sinh rất hay nhầm lẫn giữa "Toàn cầu hoá" và "Khu vực hoá".
+LỖI HAY GẶP: Học sinh nghĩ rằng cứ gia nhập bất kỳ tổ chức quốc tế nào (như ASEAN) cũng là toàn cầu hoá.
 
-ĐỊNH DẠNG: Trình bày bảng chi tiết gồm: Chặng | Thời lượng | Hoạt động Giảng viên | Hoạt động Sinh viên | Công cụ/Học liệu hỗ trợ.`;
+NHIỆM VỤ: Hãy tạo một Cặp ví dụ đối chiếu (Đúng vs Sai):
+1. Ví dụ Toàn Cầu Hoá (Chuẩn): Hoạt động của Tổ chức Thương mại Thế giới (WTO) hoặc chuỗi sản xuất máy bay Boeing/Airbus với linh kiện từ hàng chục nước trên thế giới.
+2. Ví dụ Khu Vực Hoá (Đối chiếu): Hiệp hội các quốc gia Đông Nam Á (ASEAN) hoặc Liên minh châu Âu (EU) chỉ bao gồm các nước trong cùng một khu vực địa lý láng giềng.
+3. 02 Câu hỏi tranh luận: Giúp học sinh tự so sánh phạm vi địa lý và mức độ cam kết giữa hai hình thức này.`;
 
-  const LIB_P3 = `VAI TRÒ: Chuyên gia Thiết kế Tình huống Giảng dạy Đại học (Pedagogical Case Study Designer).
-BỐI CẢNH: Giảng viên môn [Tên môn học]. Tôi cần giảng giải một khái niệm rất dễ gây nhầm lẫn: "[Tên khái niệm khó / quy tắc / kỹ thuật]".
-ĐỐI TƯỢNG: Sinh viên [Ngành học] thường mắc lỗi ngộ nhận là [Mô tả ngắn gọn lỗi sai hoặc ngộ nhận phổ biến của sinh viên].
+  const LIB_P4 = `VAI TRÒ: Chuyên gia phân hóa bài tập môn Địa lí 11.
+BỐI CẢNH: Bài 2: Toàn cầu hoá và khu vực hoá kinh tế (SGK Địa lí 11 Kết Nối Tri Thức).
+MỤC TIÊU: Thiết kế hệ thống bài tập vừa sức cho học sinh trung bình nhưng vẫn tạo thử thách cho học sinh khá giỏi.
 
-NHIỆM VỤ: Hãy thiết kế một Cặp Tình huống Đối chiếu Sư phạm (Example vs. Counter-example):
-1. Tình huống Chuẩn (Valid Example): Một ví dụ thực tế chuẩn xác, nêu rõ các tiêu chí thỏa mãn khái niệm và lý do vì sao nó đúng.
-2. Phản Ví dụ (Counter-example / Non-example): Một tình huống thoạt nhìn tưởng là đúng nhưng thực chất lại vi phạm một điều kiện then chốt của khái niệm.
-3. 02 Câu hỏi gợi mở sắc bén: Để giảng viên đưa ra cho cả lớp tranh biện, dẫn dắt sinh viên tự so sánh và tự rút ra ranh giới bản chất của khái niệm.`;
+NHIỆM VỤ: Hãy tạo 01 bài tập lớn chia thành 3 mức độ tăng tiến:
+- MỨC 1 - CƠ BẢN (Đạt 6 điểm): Đọc biểu đồ hoặc bảng số liệu trang 10 SGK Địa lí 11, nêu nhận xét về tốc độ tăng trưởng thương mại thế giới so với GDP.
+- MỨC 2 - KHÁ (Đạt 8 điểm): Giải thích vì sao các công ty đa quốc gia (như Samsung, Apple, Toyota) lại đặt nhà máy sản xuất tại các nước đang phát triển như Việt Nam?
+- MỨC 3 - THỬ THÁCH (Đạt 10 điểm): Đóng vai một doanh nghiệp dệt may hoặc chế biến thủy sản Việt Nam, đề xuất 2 giải pháp ứng phó với hàng rào thuế quan và tiêu chuẩn xanh của các nước phát triển.`;
 
-  const LIB_P4 = `VAI TRÒ: Cố vấn Phương pháp Dạy học Phân hóa Đại học (Differentiated Instruction Specialist).
-BỐI CẢNH: Trong cùng một lớp học môn [Tên môn học], sinh viên có sự phân hóa rõ rệt về năng lực tiếp thu và nền tảng đầu vào đối với chủ đề "[Tên chủ đề]".
-MỤC TIÊU: Thiết kế hệ thống nhiệm vụ học tập phân tầng để cả sinh viên trung bình lẫn sinh viên khá giỏi đều được thử thách phù hợp.
+  const LIB_P5 = `VAI TRÒ: Chuyên gia thiết kế câu hỏi trắc nghiệm kiểm tra đầu giờ môn Địa lí 11.
+BỐI CẢNH: Chuẩn bị dạy Bài 2: Toàn cầu hoá kinh tế. Học sinh đã học Bài 1 về các nhóm nước.
+MỤC TIÊU: Soạn 4 câu hỏi trắc nghiệm ngắn gọn làm trong 5 phút đầu giờ:
 
-NHIỆM VỤ: Xây dựng 01 bài tập lớn với 3 tầng mức độ tăng tiến:
-- TẦNG 1 - NỀN TẢNG (Remedial / Core Level - 6.0 điểm): Nhận diện, giải thích định nghĩa và áp dụng công thức/quy trình cơ bản vào dữ liệu tiêu chuẩn.
-- TẦNG 2 - TIÊU CHUẨN (Standard / Competent Level - 8.0 điểm): Phân tích tình huống có biến động, so sánh 2 giải pháp và chọn phương án tối ưu.
-- TẦNG 3 - THỬ THÁCH MỞ RỘNG (Advanced / Master Level - 10.0 điểm): Xử lý tình huống thông tin không hoàn hảo, phát hiện lỗi ngầm định, đề xuất chiến lược sáng tạo và dự báo rủi ro phát sinh.
-Đính kèm hướng dẫn phân công nhiệm vụ để hoạt động nhóm không có sinh viên ỷ lại.`;
+YÊU CẦU:
+- Câu 1: Nhớ lại tiêu chí phân chia nhóm nước phát triển và đang phát triển (Bài 1).
+- Câu 2: Câu hỏi nhận biết về biểu hiện của toàn cầu hoá.
+- Câu 3: Câu hỏi gài bẫy phân biệt giữa WTO (toàn cầu) và ASEAN (khu vực) mà học sinh hay nhầm.
+- Câu 4: Một câu hỏi thực tế về một sản phẩm quen thuộc hàng ngày được sản xuất từ nhiều quốc gia.`;
 
-  const LIB_P5 = `VAI TRÒ: Giảng viên Thiết kế Khảo sát Chẩn đoán Học tập (Diagnostic Assessment Designer).
-BỐI CẢNH: Môn học [Tên môn học]. Tuần tới lớp sẽ học chuyên đề mới: "[Tên chủ đề mới]", đòi hỏi sinh viên phải có sẵn kiến thức nền tảng về [Kiến thức tiên quyết đã học ở các bài trước].
-MỤC TIÊU: Thiết kế bộ câu hỏi trắc nghiệm chẩn đoán đầu giờ (Diagnostic Pre-test) gồm 4 câu hỏi để giảng viên chiếu lên màn hình trong 5 phút đầu giờ:
+  const LIB_P6 = `VAI TRÒ: Cố vấn tự học môn Địa lí 11.
+BỐI CẢNH: Kết thúc Bài 2: Toàn cầu hoá và khu vực hoá kinh tế (SGK Địa lí 11).
+MỤC TIÊU: Soạn Phiếu tự tổng kết nhanh (15 phút làm tại nhà):
 
-YÊU CẦU CHO TỪNG CÂU HỎI:
-- Câu 1: Kiểm tra việc ghi nhớ khái niệm nền tảng tiên quyết.
-- Câu 2: Kiểm tra khả năng vận dụng cơ bản.
-- Câu 3: Gài bẫy một lỗi ngộ nhận kinh điển mà 70% sinh viên thường mắc phải (kèm giải thích vì sao các đáp án nhiễu lại dễ đánh lừa).
-- Câu 4: Một câu hỏi tình huống mở (Scenario-based question) kích hoạt sự tò mò để dẫn dắt ngay vào bài giảng hôm nay.`;
-
-  const LIB_P6 = `VAI TRÒ: Cố vấn Đánh giá Phát triển Năng lực Tự học (Metacognition & Self-regulation Advisor).
-BỐI CẢNH: Kết thúc buổi học 90 phút môn [Tên môn học] về chủ đề: "[Tên chủ đề]".
-MỤC TIÊU: Thiết kế Phiếu Hướng dẫn Tự học & Phản tư Sau Lớp (Post-class Learning Log & Reflection Form) giúp sinh viên tự đúc kết trong 15 phút tại nhà.
-
-NHIỆM VỤ: Hãy soạn thảo phiếu phản tư ngắn gọn gồm 4 phần:
-1. 3 ĐIỂM SÁNG (Key Takeaways): Tự viết ra 3 luận điểm cốt lõi nhất dưới ngôn từ của chính sinh viên (không chép lại slide).
-2. 1 ĐIỂM MÙ (Muddiest Point): Khái niệm hoặc thao tác nào trong buổi học sinh viên cảm thấy còn mơ hồ hoặc khó hiểu nhất?
-3. 1 BÀI TẬP VẬN DỤNG MICRO-PRACTICE (15 phút): Một bài toán mini yêu cầu sinh viên tìm một ví dụ thực tế ngoài đời sống/doanh nghiệp minh họa cho bài học.
-4. GỢI Ý HỌC LIỆU NÂNG CAO: Đề xuất 1 bài báo khoa học hoặc 1 video chuyên sâu ngắn cho sinh viên muốn đào sâu.`;
+NỘI DUNG PHIẾU:
+1. 3 ĐIỂM SÁNG: Viết ra 3 biểu hiện rõ nhất của toàn cầu hoá mà em quan sát được trong đời sống hàng ngày.
+2. 1 ĐIỂM CÒN THẮC MẮC: Em còn thấy điểm nào khó hiểu giữa toàn cầu hoá và khu vực hoá?
+3. 1 BÀI TẬP NHỎ (15 phút): Tìm trên nhãn mác của 3 đồ vật trong nhà em (quần áo, đồ gia dụng, thiết bị điện tử) xem chúng được sản xuất tại quốc gia nào và thương hiệu của quốc gia nào.
+4. GỢI Ý TÌM HIỂU THÊM: Đề xuất 1 video phóng sự ngắn về chuỗi cung ứng toàn cầu.`;
 
   const articleHtml = `
     <div class="session-direct-article">
 
-      <!-- PHẦN 1: CHUẨN ĐẦU RA -->
+      <!-- BANNER TIÊU ĐỀ BUỔI HỌC -->
+      <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; border-radius: var(--radius-lg); padding: 24px 28px; box-shadow: var(--shadow-md); border: 1px solid #334155; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap;">
+          <span style="background: #2563eb; color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Khóa Đào Tạo AI Sư Phạm 4.0</span>
+          <span style="background: #059669; color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Tình Huống: SGK Địa Lí 11</span>
+          <span style="color: #94a3b8; font-size: 0.85rem;">Thời lượng: 180 phút (3 giờ)</span>
+        </div>
+        <h1 style="font-size: 1.75rem; font-weight: 800; color: #ffffff; margin: 0 0 10px 0; letter-spacing: -0.02em;">
+          BUỔI 3: AI THIẾT KẾ BÀI GIẢNG VÀ HỌC PHẦN
+        </h1>
+        <p style="font-size: 0.95rem; color: #cbd5e1; margin: 0; line-height: 1.65;">
+          Thực hành dùng AI thiết kế bài dạy hoàn chỉnh dựa trên cuốn <strong>Sách Giáo Khoa Địa Lí 11 (Bộ Kết Nối Tri Thức Với Cuộc Sống)</strong> — Trọng tâm là <em>Bài 2: Toàn cầu hoá và khu vực hoá kinh tế (Trang 9 – 12)</em>.
+        </p>
+      </div>
+
+
+      <!-- ========================================================================= -->
+      <!-- I. MỤC TIÊU                                                              -->
+      <!-- ========================================================================= -->
       <section class="article-section">
         <div class="article-section-header">
-          <span class="article-section-tag">PHẦN 1</span>
-          <h2 class="article-section-title">Chuẩn Đầu Ra Buổi 3: Năng Lực Thiết Kế Bài Giảng Chuẩn Mực</h2>
+          <span class="article-section-tag" style="background-color: #1e3a8a;">MỤC TIÊU</span>
+          <h2 class="article-section-title">Mục Tiêu Bài Học</h2>
         </div>
         <p class="article-prose">
-          Sau khi hoàn thành buổi học 180 phút, giảng viên làm chủ năng lực ứng dụng GenAI để chuẩn hóa toàn diện từ Chuẩn đầu ra (CLO) đến Kế hoạch bài dạy (Lesson Plan):
-        </p>
-        <table class="article-matrix-table">
-          <thead>
-            <tr>
-              <th style="width: 32%;">Chuẩn năng lực sư phạm</th>
-              <th style="width: 68%;">Mô tả chi tiết năng lực đạt được</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>1. Khung Liên kết Tương thích (Constructive Alignment)</strong></td>
-              <td>Thiết lập mối liên kết hữu cơ không thể tách rời giữa Chuẩn đầu ra học phần (CLO/PLO), Chuỗi hoạt động học tập tích cực (TLA) và Công cụ đánh giá đo lường (AT) theo mô hình của John Biggs.</td>
-            </tr>
-            <tr>
-              <td><strong>2. Chuẩn hóa CLO theo Thang đo Bloom Sửa đổi</strong></td>
-              <td>Thành thạo điều khiển AI bóc tách và viết lại các mục tiêu học tập mơ hồ thành các động từ hành vi có thể quan sát, định lượng và kiểm chứng độc lập theo 6 bậc nhận thức Bloom.</td>
-            </tr>
-            <tr>
-              <td><strong>3. Thiết kế Kịch bản Lên lớp 3 Chặng Tích cực</strong></td>
-              <td>Xây dựng tiến trình học tập liên hoàn: Trước lớp (Pre-class tự học kích hoạt) — Trong lớp (In-class tương tác sâu & giải quyết tình huống) — Sau lớp (Post-class phản tư & ứng dụng thực tiễn).</td>
-            </tr>
-            <tr>
-              <td><strong>4. Đóng gói Kế hoạch Bài dạy (Lesson Plan) Hoàn chỉnh</strong></td>
-              <td>Tạo lập 01 Lesson Plan hoàn chỉnh cho một chuyên đề thực tế, tích hợp cặp tình huống đối chiếu (Ví dụ chuẩn & Phản ví dụ), phân tầng người học và tiêu chí thẩm định chất lượng.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- PHẦN 2: NGUYÊN LÝ CONSTRUCTIVE ALIGNMENT & THANG ĐO BLOOM -->
-      <section class="article-section">
-        <div class="article-section-header">
-          <span class="article-section-tag">PHẦN 2</span>
-          <h2 class="article-section-title">Mô Hình Liên Kết Tương Thích & Thang Đo Bloom Sửa Đổi</h2>
-        </div>
-        <p class="article-prose">
-          Lỗi phổ biến nhất khi ứng dụng AI trong giảng dạy là giảng viên yêu cầu AI sinh ra một giáo án ngẫu nhiên không bám theo chuẩn đầu ra. Mô hình <strong>Constructive Alignment</strong> của Giáo sư John Biggs là kim chỉ nam bảo đảm tính khoa học sư phạm:
+          Mục tiêu đạt được sau bài học khi áp dụng AI vào thiết kế bài giảng môn Địa lí 11:
         </p>
 
-        <!-- Sơ đồ mô hình Constructive Alignment -->
-        <div class="article-image-figure" style="margin: 20px 0 24px 0; text-align: center;">
-          <div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.04);">
-            <img src="assets/images/bai3/constructive-alignment.png" alt="Sơ đồ mô hình liên kết tương thích Constructive Alignment trong thiết kế bài giảng sư phạm 4.0" style="max-width: 100%; max-height: 480px; height: auto; border-radius: var(--radius-sm); display: block;" />
+        <!-- 1. Kiến thức -->
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <span style="background: #eff6ff; color: #1d4ed8; font-weight: 800; font-size: 0.85rem; padding: 2px 8px; border-radius: 4px; border: 1px solid #bfdbfe;">1. Kiến thức</span>
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0;">Kiến thức cốt lõi cần nắm được</h3>
           </div>
-          <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 8px; font-style: italic;">
-            <strong>Hình 3.1:</strong> Mô hình liên kết tương thích (Constructive Alignment) giữa Chuẩn đầu ra (CLO) — Hoạt động dạy học (TLA) — Đánh giá đo lường (AT).
+          <ul style="margin: 0; padding-left: 22px; color: #334155; font-size: 0.92rem; line-height: 1.7;">
+            <li><strong>Nguyên tắc ăn khớp:</strong> Mục tiêu bài học đặt ra việc gì &rarr; Trên lớp tổ chức đúng hoạt động đó &rarr; Đề kiểm tra đánh giá đúng kỹ năng đó. Tránh việc mục tiêu ghi học sinh phân tích bảng số liệu thương mại, nhưng trên lớp chỉ đọc chép lý thuyết và đề kiểm tra lại hỏi học thuộc lòng định nghĩa.</li>
+            <li><strong>Đặt mục tiêu bằng động từ hành động:</strong> Sử dụng các động từ đo được (như: <em>phân tích biểu đồ, so sánh tổ chức WTO và ASEAN, giải thích nguyên nhân</em>). Loại bỏ hoàn toàn các từ mơ hồ như: <em>"hiểu bài", "nắm được kiến thức", "biết về toàn cầu hóa"</em>.</li>
+            <li><strong>Tiến trình bài dạy 4 bước chuẩn:</strong> Khởi động (Tạo tình huống thực tế chiếc điện thoại thông minh) &rarr; Khám phá kiến thức mới (Khai thác số liệu trang 9-11 SGK Địa lí 11) &rarr; Luyện tập tại lớp &rarr; Vận dụng thực tế.</li>
+            <li><strong>Cặp ví dụ đối chiếu:</strong> Sử dụng ví dụ chuẩn (Tổ chức Thương mại Thế giới WTO - phạm vi toàn cầu) và ví dụ đối chiếu (Hiệp hội các quốc gia Đông Nam Á ASEAN - phạm vi khu vực) để học sinh không bị nhầm lẫn ranh giới khái niệm.</li>
+          </ul>
+        </div>
+
+        <!-- HỘP GIẢI THÍCH THEN CHỐT: TẠI SAO PHẢI THAY ĐỔI ĐỘNG TỪ? -->
+        <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 20px; margin-bottom: 18px; box-shadow: 0 1px 4px rgba(217,119,6,0.06);">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <span style="background: #fef3c7; color: #b45309; font-weight: 800; font-size: 0.82rem; padding: 3px 8px; border-radius: 4px; border: 1px solid #fcd34d;">GIẢI THÍCH THEN CHỐT</span>
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #92400e; margin: 0;">Tại Sao Bắt Buộc Phải Đổi Động Từ Trong Mục Tiêu Bài Dạy?</h3>
+          </div>
+          
+          <p style="font-size: 0.92rem; color: #78350f; line-height: 1.65; margin: 0 0 12px 0;">
+            Đây là sai lầm phổ biến nhất của giáo viên khi soạn bài và khi ra lệnh cho AI. Việc thay đổi từ ngữ không phải là chơi chữ, mà quyết định trực tiếp xem tiết học sẽ là <strong>"học sinh tự làm"</strong> hay <strong>"người dạy đọc chép một chiều"</strong>:
           </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 14px;">
+            <div style="background: #ffffff; border: 1px solid #fde68a; border-radius: 6px; padding: 12px 14px;">
+              <strong style="color: #dc2626; font-size: 0.9rem;">1. Tại sao từ "Hiểu", "Biết", "Nắm được" là cái bẫy?</strong>
+              <p style="margin: 4px 0 0 0; font-size: 0.86rem; color: #475569; line-height: 1.6;">
+                Từ "hiểu" nằm trong đầu học sinh, người dạy <strong>không thể nhìn thấy, không thể đo đếm hay chấm điểm</strong> chính xác. Học sinh gật đầu chưa chắc đã hiểu; học sinh đọc thuộc lòng định nghĩa trong sách chỉ là học vẹt chứ chưa chắc hiểu bản chất.
+              </p>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid #fde68a; border-radius: 6px; padding: 12px 14px;">
+              <strong style="color: #16a34a; font-size: 0.9rem;">2. Thế nào là "Động từ hành động đo đếm được"?</strong>
+              <p style="margin: 4px 0 0 0; font-size: 0.86rem; color: #475569; line-height: 1.6;">
+                Bắt buộc học sinh phải <strong>làm ra một hành động cụ thể ra giấy hoặc trên máy tính</strong> (như: <em>tính ra con số, vẽ biểu đồ, chỉ ra 4 nước trên chiếc điện thoại, lập bảng so sánh</em>). Nhìn vào hành động là biết ngay đúng hay sai, được mấy điểm.
+              </p>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid #fde68a; border-radius: 6px; padding: 12px 14px;">
+              <strong style="color: #2563eb; font-size: 0.9rem;">3. Tại sao điều này quyết định chất lượng lệnh AI?</strong>
+              <p style="margin: 4px 0 0 0; font-size: 0.86rem; color: #475569; line-height: 1.6;">
+                Nếu bảo AI: <em>"Giúp học sinh hiểu bài"</em>, AI sẽ tạo ra <strong>60 phút đọc chép lý thuyết suông</strong>. Nhưng nếu bắt AI dùng từ hành động (<em>so sánh, tính toán, đóng vai</em>), AI sẽ <strong>bắt buộc phải tạo bài tập thực hành và câu hỏi tranh luận</strong> để học sinh tự làm việc!
+              </p>
+            </div>
+          </div>
+
+          <!-- Bảng đối chiếu 3 cột -->
+          <div style="overflow-x: auto;">
+            <table class="article-matrix-table" style="margin: 0; font-size: 0.86rem; background: #ffffff;">
+              <thead>
+                <tr style="background: #fef3c7;">
+                  <th style="width: 30%; color: #92400e;">Viết kiểu mơ hồ (Không đo được)</th>
+                  <th style="width: 38%; color: #92400e;">Sửa lại bằng hành động cụ thể (Đo đếm được 100%)</th>
+                  <th style="width: 32%; color: #92400e;">Cách kiểm tra xem học sinh đạt chưa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>Học sinh <strong>hiểu</strong> biểu hiện của toàn cầu hoá.</em></td>
+                  <td><em>Học sinh <strong>chỉ ra được</strong> 4 quốc gia tham gia sản xuất các bộ phận của 1 chiếc điện thoại thông minh.</em></td>
+                  <td>Học sinh viết ra giấy: Mỹ (thiết kế), Hàn Quốc (màn hình), Đài Loan (chip), Việt Nam (lắp ráp) &rarr; <strong>Đúng 4 nước = Đạt</strong>.</td>
+                </tr>
+                <tr>
+                  <td><em>Học sinh <strong>nắm được</strong> sự khác nhau giữa WTO và ASEAN.</em></td>
+                  <td><em>Học sinh <strong>lập được bảng so sánh</strong> 2 điểm khác nhau giữa tổ chức toàn cầu (WTO) và tổ chức khu vực (ASEAN).</em></td>
+                  <td>Chấm bài thi: Nêu đúng 2 tiêu chí phạm vi địa lý và mức độ cam kết &rarr; <strong>Cho điểm trọn vẹn</strong>.</td>
+                </tr>
+                <tr>
+                  <td><em>Học sinh <strong>biết</strong> cách đọc bảng số liệu SGK.</em></td>
+                  <td><em>Học sinh <strong>tính được</strong> tốc độ tăng trưởng xuất khẩu dựa vào bảng số liệu trang 10 SGK Địa lí 11.</em></td>
+                  <td>Học sinh bấm máy tính ra đúng con số tăng trưởng &rarr; <strong>Chấm điểm đúng/sai ngay lập tức</strong>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        <p class="article-prose">
-          Để hoạt động dạy học và đánh giá đo lường chính xác, Chuẩn đầu ra (CLO) bắt buộc phải được lượng hóa theo 6 bậc của Thang đo Bloom Sửa đổi:
-        </p>
+        <!-- 2. Năng lực -->
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <span style="background: #ecfdf5; color: #047857; font-weight: 800; font-size: 0.85rem; padding: 2px 8px; border-radius: 4px; border: 1px solid #a7f3d0;">2. Năng lực</span>
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0;">Năng lực chung & Năng lực đặc thù môn Địa lí</h3>
+          </div>
+          
+          <!-- Năng lực chung -->
+          <div style="margin-bottom: 12px;">
+            <div style="font-weight: 700; color: #065f46; font-size: 0.92rem; margin-bottom: 6px;">a. Năng lực chung:</div>
+            <ul style="margin: 0; padding-left: 22px; color: #334155; font-size: 0.9rem; line-height: 1.65;">
+              <li><strong>Tự chủ & Tự học:</strong> Biết mở file PDF SGK Địa lí 11, tự viết câu lệnh ra lệnh cho AI (ChatGPT, Gemini, NotebookLM) và tự đối chiếu số liệu trong sách để phát hiện lỗi sai của AI.</li>
+              <li><strong>Giao tiếp & Hợp tác:</strong> Trao đổi nhóm, nhận xét và góp ý cho bản kế hoạch bài dạy của bạn học.</li>
+              <li><strong>Giải quyết vấn đề & Sáng tạo:</strong> Chuyển hóa các bảng số liệu khô khan trong SGK thành tình huống thực tế kích thích tranh luận.</li>
+            </ul>
+          </div>
 
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin: 16px 0 20px 0; overflow: hidden;">
-          <table class="article-matrix-table" style="margin-top: 0; border: none;">
-            <thead>
-              <tr>
-                <th style="width: 18%;">Bậc nhận thức Bloom</th>
-                <th style="width: 25%;">Động từ hành vi chuẩn mực</th>
-                <th style="width: 27%;">Lỗi phổ biến khi prompt AI</th>
-                <th style="width: 30%;">Cách điều lệnh AI chuẩn Sư phạm</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Bậc 1: Nhớ (Remember)</strong></td>
-                <td>Liệt kê, nhận diện, gọi tên, nhắc lại, định nghĩa.</td>
-                <td>Dùng từ mơ hồ: <em>"Sinh viên nắm được khái niệm..."</em></td>
-                <td>Yêu cầu AI: <em>"Liệt kê đúng 4 điều kiện bắt buộc của hợp đồng..."</em></td>
-              </tr>
-              <tr>
-                <td><strong>Bậc 2: Hiểu (Understand)</strong></td>
-                <td>Giải thích, phân loại, tóm tắt, diễn giải, so sánh sơ bộ.</td>
-                <td>AI sao chép nguyên văn định nghĩa sách giáo khoa khô khan.</td>
-                <td>Yêu cầu AI: <em>"Dùng từ ngữ đời thường giải thích khái niệm cho người ngoại đạo..."</em></td>
-              </tr>
-              <tr>
-                <td><strong>Bậc 3: Vận dụng (Apply)</strong></td>
-                <td>Tính toán, thực thi, giải quyết, áp dụng công thức.</td>
-                <td>Bài tập mang tính máy móc, chỉ thay số vào công thức có sẵn.</td>
-                <td>Yêu cầu AI: <em>"Cho dữ liệu kinh doanh biến động, tính toán chi phí cơ hội thực tế..."</em></td>
-              </tr>
-              <tr>
-                <td><strong>Bậc 4: Phân tích (Analyze)</strong></td>
-                <td>Phân rã, đối chiếu, chỉ ra mối quan hệ nhân quả, suy luận.</td>
-                <td>AI đưa ra phân tích hời hợt một chiều, thiếu phản biện.</td>
-                <td>Yêu cầu AI: <em>"Chỉ ra 3 mâu thuẫn ngầm định giữa báo cáo tài chính và thực trạng kho hàng..."</em></td>
-              </tr>
-              <tr>
-                <td><strong>Bậc 5: Đánh giá (Evaluate)</strong></td>
-                <td>Phán đoán, thẩm định, phản biện, bảo vệ quan điểm, chấm điểm.</td>
-                <td>AI kết luận chung chung 'tùy thuộc vào bối cảnh'.</td>
-                <td>Yêu cầu AI: <em>"Đóng vai hội đồng thẩm định, ra quyết định chọn Phương án A hay B kèm 3 luận cứ..."</em></td>
-              </tr>
-              <tr>
-                <td><strong>Bậc 6: Sáng tạo (Create)</strong></td>
-                <td>Thiết kế, xây dựng, lập kế hoạch, đề xuất giải pháp mới.</td>
-                <td>AI tạo ra sản phẩm đại trà, có thể sao chép trên mạng.</td>
-                <td>Yêu cầu AI: <em>"Xây dựng đề xuất giải pháp với ràng buộc ngân sách dưới 20 triệu VNĐ..."</em></td>
-              </tr>
-            </tbody>
-          </table>
+          <!-- Năng lực đặc thù -->
+          <div>
+            <div style="font-weight: 700; color: #065f46; font-size: 0.92rem; margin-bottom: 6px;">b. Năng lực đặc thù môn Địa lí & Ứng dụng AI:</div>
+            <ul style="margin: 0; padding-left: 22px; color: #334155; font-size: 0.9rem; line-height: 1.65;">
+              <li><strong>Năng lực khai thác tư liệu địa lí:</strong> Dùng AI hướng dẫn học sinh đọc bảng số liệu kinh tế, biểu đồ tăng trưởng thương mại thế giới và bản đồ các tổ chức liên kết khu vực.</li>
+              <li><strong>Kỹ năng ra lệnh cho AI tạo bài giảng tương tác:</strong> Viết câu lệnh yêu cầu AI thiết kế trạm học tập phân tích biểu hiện toàn cầu hoá, không để AI sinh bài giảng đọc chép một chiều.</li>
+              <li><strong>Kỹ năng phân chia bài tập địa lí 3 mức độ:</strong> Mức 1 (Đọc bảng số liệu SGK) &rarr; Mức 2 (Giải thích vì sao doanh nghiệp đa quốc gia đầu tư vào Việt Nam) &rarr; Mức 3 (Đề xuất giải pháp cho nông sản Việt Nam khi hội nhập quốc tế).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. Phẩm chất -->
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <span style="background: #fffbeb; color: #b45309; font-weight: 800; font-size: 0.85rem; padding: 2px 8px; border-radius: 4px; border: 1px solid #fde68a;">3. Phẩm chất</span>
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0;">Phẩm chất nghề nghiệp rèn luyện qua bài học</h3>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+            <div style="border-left: 3px solid #f59e0b; padding-left: 12px;">
+              <strong style="color: #92400e; font-size: 0.9rem;">Cẩn thận & Tỉ mỉ:</strong>
+              <p style="margin: 4px 0 0 0; font-size: 0.86rem; color: #475569; line-height: 1.55;">
+                Luôn đối chiếu lại số liệu GDP, FDI và tỷ lệ phần trăm do AI đưa ra với bảng số liệu chính thức trang 9-12 SGK Địa lí 11 trước khi sử dụng.
+              </p>
+            </div>
+            <div style="border-left: 3px solid #10b981; padding-left: 12px;">
+              <strong style="color: #065f46; font-size: 0.9rem;">Trung thực & Trách nhiệm:</strong>
+              <p style="margin: 4px 0 0 0; font-size: 0.86rem; color: #475569; line-height: 1.55;">
+                Không phó mặc hoàn toàn cho AI; chịu trách nhiệm về tính chính xác của kiến thức địa lý truyền đạt cho học sinh.
+              </p>
+            </div>
+            <div style="border-left: 3px solid #2563eb; padding-left: 12px;">
+              <strong style="color: #1e40af; font-size: 0.9rem;">Tình yêu quê hương & Ý thức hội nhập:</strong>
+              <p style="margin: 4px 0 0 0; font-size: 0.86rem; color: #475569; line-height: 1.55;">
+                Giúp học sinh tự hào về vị thế kinh tế của Việt Nam trên trường quốc tế và hiểu rõ những cơ hội, thách thức của đất nước trong thời kỳ hội nhập.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- PHẦN 3: KHUNG KỊCH BẢN BÀI HỌC 3 CHẶNG TÍCH CỰC -->
+      <!-- ========================================================================= -->
+      <!-- BÀI TẬP: TIẾN TRÌNH CÁC HOẠT ĐỘNG DẠY HỌC                                 -->
+      <!-- ========================================================================= -->
       <section class="article-section">
-        <div class="article-section-header">
-          <span class="article-section-tag">PHẦN 3</span>
-          <h2 class="article-section-title">Khung Kịch Bản Bài Học 3 Chặng Tích Cực (Pre - In - Post)</h2>
+        <div class="article-section-header" style="margin-bottom: 20px;">
+          <span class="article-section-tag" style="background-color: #047857;">BÀI TẬP</span>
+          <h2 class="article-section-title">Bài Tập & Tiến Trình Hoạt Động Giảng Dạy</h2>
         </div>
-        <p class="article-prose">
-          Mô hình Lớp học đảo ngược (Flipped Classroom) và Dạy học tích cực chia buổi học thành 3 chặng liên hoàn, tối ưu hóa tối đa thời gian tương tác quý giá giữa thầy và trò trên giảng đường:
-        </p>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0 24px 0;">
-          <!-- Card 1: Trước lớp -->
-          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; display: flex; flex-direction: column;">
-            <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #2563eb; margin-bottom: 4px;">Chặng 1 • Tự học & Kích hoạt</div>
-            <div style="font-weight: 700; color: #0f172a; font-size: 0.98rem; margin-bottom: 8px;">Trước Buổi Học (Pre-class)</div>
-            <p style="font-size: 0.85rem; color: #475569; line-height: 1.55; margin-bottom: 12px;">
-              Sinh viên tiếp cận tri thức nền tảng tại nhà (đọc tài liệu tóm lược, xem video ngắn 5-7 phút) và làm bài kiểm tra chẩn đoán nhanh trên hệ thống LMS.
+        <!-- --------------------------------------------------------------------- -->
+        <!-- HOẠT ĐỘNG 1: MỞ ĐẦU / KHỞI ĐỘNG                                      -->
+        <!-- --------------------------------------------------------------------- -->
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="background: #dbeafe; color: #1e40af; font-weight: 800; font-size: 0.85rem; padding: 3px 10px; border-radius: 4px;">Hoạt động 1</span>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0;">Mở Đầu / Khởi Động: Tạo Tình Huống Xuất Phát (15 phút)</h3>
+            </div>
+            <span style="font-size: 0.82rem; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 4px;">Thời lượng: 15 phút</span>
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <strong style="color: #1e3a8a; font-size: 0.92rem;">• Mục tiêu:</strong>
+            <p style="margin: 4px 0 0 0; font-size: 0.9rem; color: #334155; line-height: 1.6;">
+              Nhận diện sai lầm phổ biến khi dùng AI: Nếu chỉ gõ một dòng ngắn ngủi yêu cầu soạn giáo án Bài 2 Địa lí 11, AI sẽ tự động sinh ra một tiết học 60 phút đọc chép định nghĩa trong sách, học sinh ngồi nghe thụ động và không hiểu bản chất toàn cầu hoá là gì.
             </p>
-            <div class="zoomable-image-wrap" onclick="window.openImageLightbox('assets/images/bai3/preclass-ai-flow.png', 'Chặng 1: Trước Lớp (Pre-class) — Ứng Dụng AI Chuẩn Bị Tri Thức Nền Tảng', 'Sơ đồ luồng: (1) Tinh gọn học liệu từ 20 trang thành 2 trang cô đọng; (2) Khảo sát chẩn đoán 3 câu hỏi LMS phát hiện lỗ hổng kiến thức trước khi đến lớp.')" style="margin-bottom: 12px; border: 1px solid #bfdbfe; box-shadow: 0 1px 4px rgba(37,99,235,0.06);" title="Bấm vào để xem ảnh phóng to chi tiết">
-              <img src="assets/images/bai3/preclass-ai-flow.png" alt="Sơ đồ ứng dụng AI chặng Trước lớp: Tinh gọn tài liệu và khảo sát chẩn đoán" style="width: 100%; height: auto; display: block;" />
-            </div>
-            <div style="margin-top: auto; font-size: 0.8rem; color: #64748b; font-style: italic;">
-              Đầu ra: Sinh viên đến lớp với vốn hiểu biết tối thiểu, sẵn sàng tranh biện.
-            </div>
           </div>
 
-          <!-- Card 2: Trong lớp -->
-          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; display: flex; flex-direction: column;">
-            <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #0d9488; margin-bottom: 4px;">Chặng 2 • Tương tác & Tranh biện</div>
-            <div style="font-weight: 700; color: #0f172a; font-size: 0.98rem; margin-bottom: 8px;">Trong Buổi Học (In-class)</div>
-            <p style="font-size: 0.85rem; color: #475569; line-height: 1.55; margin-bottom: 12px;">
-              Không giảng lại lý thuyết sách giáo khoa. Giảng viên dành toàn bộ 90 hoặc 180 phút để giải quyết tình huống thực tế, tranh luận phản ví dụ và làm việc nhóm.
+          <div style="margin-bottom: 16px;">
+            <strong style="color: #1e3a8a; font-size: 0.92rem;">• Nội dung & Sản phẩm:</strong>
+            <p style="margin: 4px 0 10px 0; font-size: 0.9rem; color: #334155; line-height: 1.6;">
+              So sánh trực tiếp kết quả của 02 câu lệnh trên cùng bài học <em>"Bài 2: Toàn cầu hoá và khu vực hoá kinh tế" (Trang 9 – 12 SGK Địa lí 11)</em>:
             </p>
-            <div class="zoomable-image-wrap" onclick="window.openImageLightbox('assets/images/bai3/inclass-ai-flow.png', 'Chặng 2: Trong Lớp (In-class) — Ứng Dụng AI Tổ Chức Tương Tác Sâu & Tranh Biện', 'Sơ đồ luồng: (1) Kích hoạt tư duy bằng tình huống nghịch lý (Hook Question); (2) Cặp tình huống đối chiếu Ví dụ chuẩn (Valid Example) và Phản ví dụ (Counter-example).')" style="margin-bottom: 12px; border: 1px solid #99f6e4; box-shadow: 0 1px 4px rgba(13,148,136,0.06);" title="Bấm vào để xem ảnh phóng to chi tiết">
-              <img src="assets/images/bai3/inclass-ai-flow.png" alt="Sơ đồ ứng dụng AI chặng Trong lớp: Tình huống nghịch lý và cặp ví dụ phản ví dụ" style="width: 100%; height: auto; display: block;" />
+
+            <!-- Card Đối chiếu Before - After -->
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              
+              <!-- Before -->
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <span style="font-size: 0.85rem; font-weight: 700; color: #dc2626;">❌ 1. Câu lệnh thô (Gõ ngắn 1 dòng, thiếu mục tiêu và bối cảnh)</span>
+                  <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(PROMPT_UPGRADE_BEFORE)}'), 'Đã sao chép prompt thô!')">
+                    Sao chép Prompt Thô
+                  </button>
+                </div>
+                <div class="article-prompt-card" style="margin-top: 2px;">
+                  <pre class="article-prompt-code" style="padding: 12px 16px; font-size: 0.85rem;">${PROMPT_UPGRADE_BEFORE}</pre>
+                </div>
+                <div style="font-size: 0.84rem; color: #991b1b; margin-top: 4px; line-height: 1.5;">
+                  <strong>Hậu quả:</strong> AI sinh ra 60 phút giáo viên đọc lại 4 biểu hiện toàn cầu hóa trong sách giáo khoa, 15 phút hỏi đáp chung chung ("Toàn cầu hóa là gì?") và 15 phút bảo học sinh về nhà học thuộc lòng. Học sinh hoàn toàn không biết liên hệ thực tế.
+                </div>
+              </div>
+
+              <!-- After -->
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <span style="font-size: 0.85rem; font-weight: 700; color: #16a34a;">✅ 2. Câu lệnh chuẩn đầy đủ (Bám sát trang 9-12 SGK Địa lí 11, có hoạt động tranh luận)</span>
+                  <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(PROMPT_UPGRADE_AFTER)}'), 'Đã sao chép prompt chuẩn!')">
+                    Sao chép Prompt Chuẩn
+                  </button>
+                </div>
+                <div class="article-prompt-card" style="margin-top: 2px;">
+                  <pre class="article-prompt-code" style="padding: 14px 16px; font-size: 0.85rem; max-height: 240px; overflow-y: auto;">${PROMPT_UPGRADE_AFTER}</pre>
+                </div>
+                <div style="font-size: 0.84rem; color: #166534; margin-top: 4px; line-height: 1.5;">
+                  <strong>Ưu điểm:</strong> Nêu rõ học sinh lớp 11 hay nhầm lẫn giữa toàn cầu hóa và khu vực hóa, có tình huống chiếc điện thoại thông minh khơi gợi tò mò, có bài tập nhóm phân tích số liệu bảng biểu trang 9-11 SGK và bài tập xử lý nông sản xuất khẩu.
+                </div>
+              </div>
             </div>
-            <div style="margin-top: auto; font-size: 0.8rem; color: #64748b; font-style: italic;">
-              Đầu ra: Rèn luyện tư duy phản biện và năng lực giải quyết vấn đề thực tế.
+
+            <!-- Kết luận khởi động -->
+            <div style="margin-top: 14px; padding: 12px 16px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; font-size: 0.88rem; color: #1e3a8a;">
+              <strong>Sản phẩm đạt được:</strong> Rút ra 3 nguyên tắc viết lệnh cho AI: (1) Chỉ rõ bài học và số trang trong SGK; (2) Viết mục tiêu bằng động từ cụ thể (phân tích, so sánh); (3) Yêu cầu có hoạt động thực tế để học sinh làm việc, không giảng suông.
             </div>
           </div>
+        </div>
 
-          <!-- Card 3: Sau lớp -->
-          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; display: flex; flex-direction: column;">
-            <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #d97706; margin-bottom: 4px;">Chặng 3 • Khắc sâu & Phản tư</div>
-            <div style="font-weight: 700; color: #0f172a; font-size: 0.98rem; margin-bottom: 8px;">Sau Buổi Học (Post-class)</div>
-            <p style="font-size: 0.85rem; color: #475569; line-height: 1.55; margin-bottom: 12px;">
-              Chuyển hóa kiến thức lớp học thành năng lực cá nhân thông qua bài tập thực tế có phân tầng độ khó và viết phiếu phản tư (Reflection Log).
+        <!-- --------------------------------------------------------------------- -->
+        <!-- HOẠT ĐỘNG 2: PHƯƠNG PHÁP & CÂU LỆNH MẪU                               -->
+        <!-- --------------------------------------------------------------------- -->
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="background: #dcfce7; color: #15803d; font-weight: 800; font-size: 0.85rem; padding: 3px 10px; border-radius: 4px;">Hoạt động 2</span>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0;">Phương Pháp Viết Lệnh Chuẩn & Bộ 6 Câu Lệnh Mẫu (50 phút)</h3>
+            </div>
+            <span style="font-size: 0.82rem; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 4px;">Thời lượng: 50 phút</span>
+          </div>
+
+          <!-- Mục tiêu tự nhiên, dễ hiểu -->
+          <div style="margin-bottom: 18px; background: #f8fafc; border-left: 4px solid #10b981; padding: 10px 14px; border-radius: 0 6px 6px 0;">
+            <strong style="color: #065f46; font-size: 0.9rem;">Mục tiêu phần này:</strong>
+            <p style="margin: 4px 0 0 0; font-size: 0.88rem; color: #334155; line-height: 1.6;">
+              Nắm chắc nguyên tắc 3 chân kiềng <strong>(Mục tiêu &rarr; Luyện tập &rarr; Kiểm tra)</strong>, biết cách chọn động từ cụ thể khi ra lệnh cho AI và lấy bộ 6 câu lệnh mẫu để chuẩn bị sang phần thực hành.
             </p>
-            <div class="zoomable-image-wrap" onclick="window.openImageLightbox('assets/images/bai3/postclass-ai-flow.png', 'Chặng 3: Sau Lớp (Post-class) — Ứng Dụng AI Khắc Sâu Tri Thức & Đánh Giá Phân Tầng', 'Sơ đồ luồng: (1) Phân tầng nhiệm vụ tự học 3 cấp độ (Nền tảng, Tiêu chuẩn, Thử thách); (2) Khung Rubric tự đánh giá và Phiếu phản tư 15 phút (Reflection Log).')" style="margin-bottom: 12px; border: 1px solid #fde68a; box-shadow: 0 1px 4px rgba(217,119,6,0.06);" title="Bấm vào để xem ảnh phóng to chi tiết">
-              <img src="assets/images/bai3/postclass-ai-flow.png" alt="Sơ đồ ứng dụng AI chặng Sau lớp: Phân tầng nhiệm vụ và rubric phản tư" style="width: 100%; height: auto; display: block;" />
+          </div>
+
+          <!-- PHẦN 1: GIẢI THÍCH SƠ ĐỒ NGUYÊN TẮC ĂN KHỚP -->
+          <div style="margin-bottom: 24px;">
+            <div style="font-weight: 700; color: #1e3a8a; font-size: 1rem; margin-bottom: 6px;">
+              1. Nguyên tắc 3 chân kiềng: "Nói gì &rarr; Luyện nấy &rarr; Thi nấy"
             </div>
-            <div style="margin-top: auto; font-size: 0.8rem; color: #64748b; font-style: italic;">
-              Đầu ra: Đóng gói hồ sơ học tập (Portfolio) và củng cố tri thức lâu dài.
+            <p style="font-size: 0.88rem; color: #334155; line-height: 1.65; margin: 0 0 12px 0;">
+              Khi nhờ AI soạn giáo án, lỗi phổ biến nhất là <strong>"đầu voi đuôi chuột"</strong>: AI viết mục tiêu rất to tát, nhưng bên dưới lại tạo ra một tiết học giáo viên đứng đọc cho học sinh chép, và câu hỏi kiểm tra thì toàn hỏi thuộc lòng. Sơ đồ bên dưới giúp bạn kiểm soát để AI không làm sai:
+            </p>
+
+            <!-- Hình ảnh sơ đồ -->
+            <div class="article-image-figure" style="margin: 14px 0; text-align: center;">
+              <div style="background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <img src="assets/images/bai3/constructive-alignment.png" alt="Sơ đồ 3 trụ cột liên kết tương thích: Chuẩn đầu ra — Hoạt động dạy học — Đánh giá đo lường" style="max-width: 100%; max-height: 360px; height: auto; border-radius: 4px; display: block;" />
+              </div>
+              <p style="font-size: 0.83rem; color: #64748b; margin-top: 6px; font-style: italic;">
+                <strong>Hình 3.1:</strong> Sơ đồ 3 trụ cột liên kết chặt chẽ (Chuẩn đầu ra &mdash; Hoạt động dạy học &mdash; Đánh giá đo lường).
+              </p>
+            </div>
+
+            <!-- Khối giải thích chi tiết 3 cột bằng ngôn ngữ gần gũi -->
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px 16px; margin: 14px 0;">
+              <div style="font-weight: 700; color: #166534; font-size: 0.92rem; margin-bottom: 8px;">
+                💡 Giải thích chi tiết 3 cột trong sơ đồ trên (Qua ví dụ Bài 2 Địa lí 11):
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.87rem; color: #1e293b; line-height: 1.6;">
+                <div>
+                  <strong style="color: #1e40af;">• Cột 1 - Chuẩn đầu ra (Mục tiêu):</strong> Xác định rõ học sinh <em>làm được việc gì cụ thể</em> sau bài học. Ví dụ: Học sinh <em>"Phân tích được cơ hội và thách thức của Việt Nam khi gia nhập kinh tế thế giới"</em> (không dùng từ mơ hồ như "hiểu bài", "nắm được kiến thức").
+                </div>
+                <div>
+                  <strong style="color: #065f46;">• Cột 2 - Hoạt động dạy học (Luyện tập trên lớp):</strong> Giáo viên phải cho học sinh <em>luyện tập đúng việc đã đặt ra ở Cột 1</em>. Ví dụ: Cho học sinh chia nhóm mổ xẻ số liệu xuất nhập khẩu trang 10 SGK Địa lí 11 để tự tìm ra cơ hội, chứ không bắt học sinh ngồi chép định nghĩa suông.
+                </div>
+                <div>
+                  <strong style="color: #b45309;">• Cột 3 - Đánh giá đo lường (Đề thi):</strong> Đề kiểm tra phải <em>đo đúng năng lực đã luyện ở Cột 2</em>. Cho tình huống thực tế để học sinh vận dụng phân tích, chấm điểm theo barem rõ ràng.
+                </div>
+              </div>
+
+              <!-- Ví dụ thực tế về câu hỏi tình huống -->
+              <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #86efac; font-size: 0.86rem; color: #15803d; line-height: 1.6;">
+                <strong>Ví dụ tránh lệch pha:</strong> Nếu mục tiêu yêu cầu học sinh <em>"Phân tích cơ hội..."</em>, nhưng đề thi chỉ hỏi thuộc lòng <em>"Toàn cầu hóa là gì?"</em> thì học sinh chỉ cần chép vẹt sách giáo khoa là được điểm tối đa &rarr; Đề thi như vậy không đo lường được xem học sinh có biết phân tích hay không.
+              </div>
+            </div>
+          </div>
+
+          <!-- PHẦN 2: BẢNG CHỌN ĐỘNG TỪ HÀNH ĐỘNG -->
+          <div style="margin-bottom: 24px;">
+            <div style="font-weight: 700; color: #1e3a8a; font-size: 1rem; margin-bottom: 6px;">
+              2. Bảng chọn động từ cụ thể để ra lệnh cho AI
+            </div>
+            <p style="font-size: 0.88rem; color: #334155; line-height: 1.6; margin: 0 0 10px 0;">
+              Khi yêu cầu AI viết mục tiêu bài học hoặc bài tập, hãy thay thế những từ mơ hồ khó kiểm tra bằng các động từ hành động cụ thể sau:
+            </p>
+
+            <!-- Bảng chọn động từ -->
+            <div style="overflow-x: auto; margin: 12px 0;">
+              <table class="article-matrix-table" style="margin-top: 0; font-size: 0.86rem;">
+                <thead>
+                  <tr>
+                    <th style="width: 18%;">Mức độ bài học</th>
+                    <th style="width: 26%;">Động từ hành động nên dùng (Địa lí 11)</th>
+                    <th style="width: 26%;">Từ mơ hồ cần tránh</th>
+                    <th style="width: 30%;">Ví dụ câu lệnh ra lệnh cho AI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1. Nhớ lại</strong></td>
+                    <td>Trình bày, liệt kê, nêu tên các tổ chức.</td>
+                    <td>"Học sinh nắm được khái niệm..."</td>
+                    <td>"Liệt kê đúng 4 biểu hiện của toàn cầu hoá trang 9 SGK..."</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2. Hiểu rõ</strong></td>
+                    <td>Giải thích, so sánh, phân loại.</td>
+                    <td>"Học sinh hiểu được ý nghĩa..."</td>
+                    <td>"Giải thích vì sao thương mại thế giới tăng nhanh hơn GDP..."</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3. Áp dụng</strong></td>
+                    <td>Tính toán số liệu, vẽ biểu đồ, xử lý dữ liệu.</td>
+                    <td>"Biết cách đọc biểu đồ..."</td>
+                    <td>"Dựa vào bảng số liệu trang 10 SGK, tính tốc độ tăng trưởng..."</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4. Phân tích</strong></td>
+                    <td>Đối chiếu, mổ xẻ nguyên nhân, chỉ ra tác động.</td>
+                    <td>"Xem xét các mặt tích cực..."</td>
+                    <td>"Phân tích cơ hội và thách thức của nông sản Việt Nam..."</td>
+                  </tr>
+                  <tr>
+                    <td><strong>5. Đánh giá</strong></td>
+                    <td>Phán đoán, bảo vệ quan điểm, nhận định.</td>
+                    <td>"Có ý thức về hội nhập..."</td>
+                    <td>"Đánh giá tác động của cuộc cách mạng 4.0 đến việc làm tại VN..."</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6. Sáng tạo</strong></td>
+                    <td>Đề xuất giải pháp, lập kế hoạch hành động.</td>
+                    <td>"Nâng cao tư duy thực tế..."</td>
+                    <td>"Đề xuất 2 giải pháp giúp doanh nghiệp dệt may xuất khẩu..."</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- PHẦN 3: BỘ 6 CÂU LỆNH MẪU SẴN SÀNG SỬ DỤNG -->
+          <div>
+            <div style="font-weight: 700; color: #1e3a8a; font-size: 1rem; margin-bottom: 6px;">
+              3. Bộ 6 câu lệnh mẫu sẵn sàng sử dụng cho Bài 2 SGK Địa Lí 11
+            </div>
+            <p style="font-size: 0.88rem; color: #334155; line-height: 1.6; margin: 0 0 12px 0;">
+              Các câu lệnh dưới đây đã được viết chuẩn theo nguyên tắc trên. Bạn chỉ cần bấm <strong>Sao chép</strong> để dán vào AI khi thực hành ở <strong>Hoạt động 3</strong>:
+            </p>
+
+              <!-- Thư viện 6 Prompts -->
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                
+                <!-- P1 -->
+                <div class="article-prompt-card">
+                  <div class="article-prompt-header">
+                    <span class="article-prompt-title">Prompt 01: Viết Mục Tiêu Bài Dạy SGK Địa Lí 11 Đo Lường Được</span>
+                    <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P1)}'), 'Đã sao chép Prompt 1!')">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Sao chép Prompt 1
+                    </button>
+                  </div>
+                  <pre class="article-prompt-code" style="padding: 12px 16px; font-size: 0.83rem; max-height: 160px; overflow-y: auto;">${LIB_P1}</pre>
+                </div>
+
+                <!-- P2 -->
+                <div class="article-prompt-card">
+                  <div class="article-prompt-header">
+                    <span class="article-prompt-title">Prompt 02: Lập Kế Hoạch 4 Hoạt Động Khám Phá Bài 2 Địa Lí 11</span>
+                    <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P2)}'), 'Đã sao chép Prompt 2!')">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Sao chép Prompt 2
+                    </button>
+                  </div>
+                  <pre class="article-prompt-code" style="padding: 12px 16px; font-size: 0.83rem; max-height: 160px; overflow-y: auto;">${LIB_P2}</pre>
+                </div>
+
+                <!-- P3 -->
+                <div class="article-prompt-card">
+                  <div class="article-prompt-header">
+                    <span class="article-prompt-title">Prompt 03: Tạo Cặp Ví Dụ Đúng vs Sai (Toàn Cầu Hóa vs Khu Vực Hóa)</span>
+                    <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P3)}'), 'Đã sao chép Prompt 3!')">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Sao chép Prompt 3
+                    </button>
+                  </div>
+                  <pre class="article-prompt-code" style="padding: 12px 16px; font-size: 0.83rem; max-height: 160px; overflow-y: auto;">${LIB_P3}</pre>
+                </div>
+
+                <!-- P4 -->
+                <div class="article-prompt-card">
+                  <div class="article-prompt-header">
+                    <span class="article-prompt-title">Prompt 04: Chia Bài Tập Địa Lí 11 Theo 3 Mức Độ (6đ &rarr; 8đ &rarr; 10đ)</span>
+                    <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P4)}'), 'Đã sao chép Prompt 4!')">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Sao chép Prompt 4
+                    </button>
+                  </div>
+                  <pre class="article-prompt-code" style="padding: 12px 16px; font-size: 0.83rem; max-height: 160px; overflow-y: auto;">${LIB_P4}</pre>
+                </div>
+
+                <!-- P5 -->
+                <div class="article-prompt-card">
+                  <div class="article-prompt-header">
+                    <span class="article-prompt-title">Prompt 05: Tạo 4 Câu Hỏi Trắc Nghiệm Khởi Động Đầu Giờ Địa Lí 11</span>
+                    <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P5)}'), 'Đã sao chép Prompt 5!')">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Sao chép Prompt 5
+                    </button>
+                  </div>
+                  <pre class="article-prompt-code" style="padding: 12px 16px; font-size: 0.83rem; max-height: 160px; overflow-y: auto;">${LIB_P5}</pre>
+                </div>
+
+                <!-- P6 -->
+                <div class="article-prompt-card">
+                  <div class="article-prompt-header">
+                    <span class="article-prompt-title">Prompt 06: Phiếu Tự Tổng Kết Nhanh Sau Lớp Bài 2 Địa Lí 11</span>
+                    <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P6)}'), 'Đã sao chép Prompt 6!')">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Sao chép Prompt 6
+                    </button>
+                  </div>
+                  <pre class="article-prompt-code" style="padding: 12px 16px; font-size: 0.83rem; max-height: 160px; overflow-y: auto;">${LIB_P6}</pre>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------- -->
+        <!-- HOẠT ĐỘNG 3: LUYỆN TẬP                                               -->
+        <!-- --------------------------------------------------------------------- -->
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="background: #fef3c7; color: #b45309; font-weight: 800; font-size: 0.85rem; padding: 3px 10px; border-radius: 4px;">Hoạt động 3</span>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0;">Luyện Tập: Thực Hành Soạn Kế Hoạch Bài Dạy SGK Địa Lí 11 (80 phút)</h3>
+            </div>
+            <span style="font-size: 0.82rem; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 4px;">Thời lượng: 80 phút</span>
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <strong style="color: #92400e; font-size: 0.92rem;">• Mục tiêu:</strong>
+            <p style="margin: 4px 0 0 0; font-size: 0.9rem; color: #334155; line-height: 1.6;">
+              Tự tay mở file PDF <strong>Sách Giáo Khoa Địa Lí 11</strong> (Bài 2: Trang 9-12 hoặc bài bất kỳ trong sách), sử dụng các câu lệnh mẫu để hoàn thành 01 Kế hoạch bài dạy chi tiết 90 phút và trực tiếp đối chiếu, sửa lỗi số liệu của AI.
+            </p>
+          </div>
+
+          <!-- HỌC LIỆU THỰC HÀNH: MỞ FILE PDF SGK ĐỊA LÍ 11 -->
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px 18px; margin: 16px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="background: #10b981; color: #ffffff; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+                PDF
+              </div>
+              <div>
+                <div style="font-weight: 700; color: #065f46; font-size: 0.95rem;">Học liệu thực hành: Sách Giáo Khoa Địa Lí 11 — Kết Nối Tri Thức Với Cuộc Sống</div>
+                <div style="font-size: 0.83rem; color: #047857;">File PDF gốc 171 trang có sẵn trong thư mục dự án • Trọng tâm thực hành: Bài 2 (Trang 9 – 12)</div>
+              </div>
+            </div>
+            <a href="sach-giao-khoa-dia-li-11-ket-noi-tri-thuc-voi-cuoc-song.pdf" target="_blank" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Mở File PDF SGK Địa Lí 11
+            </a>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <strong style="color: #92400e; font-size: 0.92rem;">• Các bước thực hiện thực tế:</strong>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+              
+              <!-- Chặng 3.1 -->
+              <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 14px 16px;">
+                <div style="font-weight: 700; color: #b45309; font-size: 0.92rem; margin-bottom: 4px;">
+                  Chặng 3.1 (30 phút): Viết mục tiêu hành động & Lập khung 4 hoạt động Bài 2
+                </div>
+                <div style="font-size: 0.88rem; color: #475569; line-height: 1.6;">
+                  Mở file PDF SGK Địa lí 11 tại trang 9:
+                  <br>• Dùng <strong>Prompt 1</strong> viết 3 mục tiêu hành động cụ thể cho Bài 2.
+                  <br>• Dùng <strong>Prompt 2</strong> để AI gợi ý khung tiến trình 4 hoạt động cân đối giữa việc dạy và việc học.
+                </div>
+              </div>
+
+              <!-- Chặng 3.2 -->
+              <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 14px 16px;">
+                <div style="font-weight: 700; color: #b45309; font-size: 0.92rem; margin-bottom: 4px;">
+                  Chặng 3.2 (50 phút): Tạo cặp ví dụ đối chiếu & Đối chiếu bảng số liệu thật
+                </div>
+                <div style="font-size: 0.88rem; color: #475569; line-height: 1.6;">
+                  • Dùng <strong>Prompt 3</strong> tạo cặp ví dụ phân biệt WTO và ASEAN/EU.
+                  <br>• Dùng <strong>Prompt 4</strong> chia bài tập trên lớp thành 3 mức độ (Cơ bản, Khá, Thử thách).
+                  <br>• <strong>Kiểm tra số liệu SGK:</strong> Mở trang 10-11 SGK Địa lí 11, đối chiếu bảng số liệu FDI và thương mại thế giới do AI đưa ra xem có bịa đặt số liệu hay không, chỉnh sửa lại cho đúng 100% với sách giáo khoa.
+                </div>
+              </div>
+
+            </div>
+
+            <div style="margin-top: 14px; padding: 12px 16px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.88rem; color: #1e293b;">
+              <strong>Sản phẩm cần hoàn thành:</strong> 01 File văn bản Kế hoạch bài dạy hoàn chỉnh cho Bài 2 Địa lí 11 đáp ứng đủ 4 tiêu chuẩn: (1) Mục tiêu rõ ràng; (2) Tiến trình 4 hoạt động cân đối; (3) Có ví dụ đối chiếu; (4) Số liệu đã được đối chiếu chuẩn xác với SGK Địa lí 11.
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------- -->
+        <!-- HOẠT ĐỘNG 4: VẬN DỤNG / TIÊU CHÍ KẾT QUẢ                              -->
+        <!-- --------------------------------------------------------------------- -->
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="background: #f3e8ff; color: #7e22ce; font-weight: 800; font-size: 0.85rem; padding: 3px 10px; border-radius: 4px;">Hoạt động 4</span>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0;">Vận Dụng: Tiêu Chí Nghiệm Thu Kế Hoạch Bài Dạy (30 phút)</h3>
+            </div>
+            <span style="font-size: 0.82rem; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 4px;">Thời lượng: 30 phút</span>
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <strong style="color: #6b21a8; font-size: 0.92rem;">• Mục tiêu:</strong>
+            <p style="margin: 4px 0 0 0; font-size: 0.9rem; color: #334155; line-height: 1.6;">
+              Tự rà soát và đối chiếu kế hoạch bài dạy vừa soạn với bộ tiêu chí chất lượng, phát hiện các điểm chưa ăn khớp hoặc lỗi số liệu của AI để hoàn thiện bản giáo án hoàn chỉnh nhất.
+            </p>
+          </div>
+
+          <div>
+            <strong style="color: #6b21a8; font-size: 0.92rem;">• Tiêu chí đánh giá kết quả bài dạy (Bảng tự kiểm tra 4 tiêu chí cốt lõi):</strong>
+            <p style="margin: 4px 0 10px 0; font-size: 0.9rem; color: #334155; line-height: 1.6;">
+              Dùng bảng tiêu chí bên dưới để tự kiểm tra chất lượng bản Kế hoạch bài dạy Bài 2 Địa lí 11:
+            </p>
+
+            <table class="article-matrix-table" style="font-size: 0.88rem; margin-bottom: 14px;">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Tiêu chí kết quả</th>
+                  <th style="width: 48%;">Yêu cầu cần đạt cụ thể</th>
+                  <th style="width: 27%;">Kết quả tự đánh giá</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Mục tiêu bài học (Đo lường được)</strong></td>
+                  <td>Dùng đúng các động từ hành động cụ thể (liệt kê, giải thích, phân tích, tính toán...); không dùng các từ mơ hồ khó đo lường như <em>"hiểu bài"</em>, <em>"nắm được kiến thức"</em>.</td>
+                  <td>Đạt / Cần sửa lại động từ</td>
+                </tr>
+                <tr>
+                  <td><strong>2. Hoạt động trên lớp (Tránh thụ động)</strong></td>
+                  <td>Học sinh có hoạt động tự tay làm việc (đọc số liệu, xử lý bảng biểu trang 9-11 SGK, thảo luận nhóm), không bị bắt ngồi nghe giáo viên đọc chép quá 15 phút.</td>
+                  <td>Đạt / Cần thêm việc cho HS</td>
+                </tr>
+                <tr>
+                  <td><strong>3. Cặp ví dụ đối chiếu (Rõ ranh giới)</strong></td>
+                  <td>Có đủ cặp ví dụ chuẩn (toàn cầu hóa - WTO, chuỗi Boeing) và ví dụ sai/đối chiếu (khu vực hóa - ASEAN, EU) để học sinh không bị nhầm lẫn ranh giới khái niệm.</td>
+                  <td>Đạt / Cần bổ sung ví dụ</td>
+                </tr>
+                <tr>
+                  <td><strong>4. Đối chiếu số liệu SGK (Chính xác 100%)</strong></td>
+                  <td>Đã mở file PDF đối chiếu các số liệu FDI, thương mại và GDP với trang 9–11 SGK Địa lí 11; đã sửa lại chuẩn xác các số liệu bịa đặt do AI đưa ra.</td>
+                  <td>Đạt 100% chuẩn SGK / Cần sửa lại</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="padding: 12px 16px; background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 6px; font-size: 0.88rem; color: #581c87;">
+              <strong>Sản phẩm hoàn thành:</strong> 01 Bản Kế hoạch bài dạy hoàn chỉnh cho Bài 2 Địa lí 11 đã được tự kiểm tra đạt đủ 4 tiêu chí trên, sẵn sàng đưa vào giảng dạy thực tế.
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PHẦN 4: THỰC NGHIỆM NÂNG CẤP CÂU LỆNH THIẾT KẾ BÀI DẠY -->
+      <!-- ========================================================================= -->
+      <!-- IV. HƯỚNG DẪN VỀ NHÀ VÀ DẶN DÒ                                           -->
+      <!-- ========================================================================= -->
       <section class="article-section">
         <div class="article-section-header">
-          <span class="article-section-tag">PHẦN 4</span>
-          <h2 class="article-section-title">Thực Nghiệm Sư Phạm: Nâng Cấp Câu Lệnh Thiết Kế Bài Dạy</h2>
+          <span class="article-section-tag" style="background-color: #c2410c;">DẶN DÒ</span>
+          <h2 class="article-section-title">Hướng Dẫn Về Nhà & Dặn Dò</h2>
         </div>
         <p class="article-prose">
-          Đối chiếu trực tiếp sự khác biệt giữa câu lệnh thiết kế bài dạy đại trà và câu lệnh chuẩn Sư phạm 4.0 trên cùng một chuyên đề giảng dạy đại học:
+          Hai nhiệm vụ cần hoàn thành tại nhà sau buổi học:
         </p>
 
-        <!-- Thẻ Tình huống thực nghiệm -->
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin: 16px 0 20px 0; overflow: hidden;">
-          <div style="padding: 12px 18px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: #f8fafc;">
-            <span style="font-weight: 700; color: #1e293b; font-size: 0.95rem;">Tình huống sư phạm đối chiếu</span>
-            <span style="font-size: 0.8rem; color: #64748b; background: #ffffff; border: 1px solid #cbd5e1; padding: 2px 8px; border-radius: 4px;">Tài chính Ngân hàng • 90 phút</span>
-          </div>
-          <div style="padding: 14px 18px; font-size: 0.88rem; color: #334155; line-height: 1.6;">
-            <strong>Chuyên đề lên lớp:</strong> <em>"Quản trị Rủi ro Tín dụng trong Ngân hàng Thương mại — Mô hình 5C thẩm định khách hàng doanh nghiệp"</em>. Sinh viên hay học thuộc lòng lý thuyết 5C (Character, Capacity, Capital, Collateral, Conditions) nhưng khi đọc báo cáo tài chính thật thì hoàn toàn không nhận diện được dấu hiệu cảnh báo rủi ro vỡ nợ.
-          </div>
-        </div>
-
-        <!-- Before: Prompt Thô -->
-        <div style="margin-bottom: 24px;">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
-            <h4 style="font-size: 0.95rem; font-weight: 700; color: #1e293b; margin: 0;">Câu lệnh thô (Trước khi nâng cấp)</h4>
-            <span style="font-size: 0.82rem; color: #64748b;">Thiếu bối cảnh người học, không có chuẩn Bloom, mô hình đọc - chép cũ</span>
-          </div>
-
-          <div class="article-prompt-card">
-            <div class="article-prompt-header">
-              <span class="article-prompt-title">Prompt Thô</span>
-              <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(PROMPT_UPGRADE_BEFORE)}'), 'Đã sao chép câu lệnh thô!')">
-                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                Sao chép Prompt
-              </button>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 10px;">
+          
+          <!-- Hộp 1: Ôn tập & Hoàn thiện -->
+          <div style="background: #ffffff; border: 1px solid #fed7aa; border-radius: 8px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(234,88,12,0.06);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="background: #ffedd5; color: #c2410c; font-weight: 800; font-size: 0.82rem; padding: 2px 8px; border-radius: 4px;">Nhiệm vụ 1</span>
+              <h3 style="font-size: 1rem; font-weight: 700; color: #0f172a; margin: 0;">Ôn tập bài cũ & Hoàn thiện bài soạn</h3>
             </div>
-            <pre class="article-prompt-code">${PROMPT_UPGRADE_BEFORE}</pre>
-          </div>
-          <p style="font-size: 0.85rem; color: #64748b; margin-top: 6px; line-height: 1.5;">
-            <strong style="color: #dc2626;">Hạn chế:</strong> AI trả về một dàn ý truyền thống gồm 60 phút giảng viên đứng thuyết trình lý thuyết 5C, 15 phút hỏi đáp chung chung và 15 phút bài tập về nhà đọc sách. Sinh viên hoàn toàn thụ động, không đạt được bất kỳ kỹ năng phân tích thực tế nào.
-          </p>
-        </div>
-
-        <!-- After: Prompt Chuẩn Sư Phạm 4.0 -->
-        <div style="margin-bottom: 24px;">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
-            <h4 style="font-size: 0.95rem; font-weight: 700; color: #1e293b; margin: 0;">Câu lệnh chuẩn Sư phạm 4.0 (Sau khi áp dụng Mô hình 3 Chặng & Bloom)</h4>
-            <span style="font-size: 0.82rem; color: #64748b;">Đầy đủ Chuẩn đầu ra Bậc 4-5, chia 3 chặng Pre-In-Post, hoạt động GV-SV đối xứng</span>
+            <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: #475569; line-height: 1.65;">
+              <li>Ôn lại bài cũ: Xem lại các động từ hành động và cách thiết kế 4 hoạt động dạy học khám phá.</li>
+              <li>Hoàn thiện bản Kế hoạch bài dạy Bài 2 Địa lí 11 theo các tiêu chí đã đối chiếu.</li>
+              <li>Lưu trữ file Kế hoạch bài dạy hoàn chỉnh vào thư mục học tập cá nhân.</li>
+            </ul>
           </div>
 
-          <div class="article-prompt-card">
-            <div class="article-prompt-header">
-              <span class="article-prompt-title">Prompt Chuẩn Sư Phạm 4.0</span>
-              <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(PROMPT_UPGRADE_AFTER)}'), 'Đã sao chép câu lệnh chuẩn sư phạm!')">
-                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                Sao chép Prompt
-              </button>
+          <!-- Hộp 2: Chuẩn bị Buổi 4 & Buổi 5 -->
+          <div style="background: #ffffff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(37,99,235,0.06);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="background: #eff6ff; color: #1d4ed8; font-weight: 800; font-size: 0.82rem; padding: 2px 8px; border-radius: 4px;">Nhiệm vụ 2</span>
+              <h3 style="font-size: 1rem; font-weight: 700; color: #0f172a; margin: 0;">Chuẩn bị học liệu cho Buổi 4 & Buổi 5</h3>
             </div>
-            <pre class="article-prompt-code">${PROMPT_UPGRADE_AFTER}</pre>
-          </div>
-          <p style="font-size: 0.85rem; color: #64748b; margin-top: 6px; line-height: 1.5;">
-            <strong style="color: #16a34a;">Ưu điểm:</strong> AI xây dựng kịch bản chặt chẽ với nhiệm vụ chuẩn bị trước lớp, tình huống nghịch lý kích hoạt tranh luận trong lớp, đóng vai hội đồng thẩm định tín dụng phân tích hồ sơ thật và phiếu phản tư sau lớp đo lường chính xác chuẩn đầu ra Bậc 4 và Bậc 5.
-          </p>
-        </div>
-      </section>
-
-      <!-- PHẦN 5: BỘ 06 CÂU LỆNH CHUẨN MẪU THIẾT KẾ BÀI GIẢNG -->
-      <section class="article-section">
-        <div class="article-section-header">
-          <span class="article-section-tag">PHẦN 5</span>
-          <h2 class="article-section-title">Thư Viện 06 Câu Lệnh Chuẩn Thiết Kế Bài Giảng (Prompt Library)</h2>
-        </div>
-        <p class="article-prose">
-          Bộ 06 câu lệnh chuẩn mực được đóng gói công phu phục vụ toàn bộ chu trình thiết kế bài dạy của giảng viên. Giảng viên chỉ cần sao chép, điền thông tin môn học trong dấu ngoặc vuông và đưa vào ChatGPT/Gemini/NotebookLM:
-        </p>
-
-        <!-- Prompt 1 -->
-        <div style="margin-bottom: 22px;">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
-            <h4 style="font-size: 0.92rem; font-weight: 700; color: #1e293b; margin: 0;">1. Chuẩn Hóa Chuẩn Đầu Ra (CLO) Đo Lường Được Theo Thang Đo Bloom Sửa Đổi</h4>
-            <span style="font-size: 0.8rem; color: #64748b;">Khử từ mơ hồ, gán động từ hành vi và chỉ báo đo lường</span>
-          </div>
-          <div class="article-prompt-card">
-            <div class="article-prompt-header">
-              <span class="article-prompt-title">Prompt 01: Chuẩn Hóa CLO Theo Thang Bloom</span>
-              <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P1)}'), 'Đã sao chép Prompt 1!')">
-                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                Sao chép Prompt
-              </button>
-            </div>
-            <pre class="article-prompt-code">${LIB_P1}</pre>
-          </div>
-        </div>
-
-        <!-- Prompt 2 -->
-        <div style="margin-bottom: 22px;">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
-            <h4 style="font-size: 0.92rem; font-weight: 700; color: #1e293b; margin: 0;">2. Thiết Kế Kế Hoạch Bài Dạy (Lesson Plan) Toàn Diện Theo Mô Hình 3 Chặng</h4>
-            <span style="font-size: 0.8rem; color: #64748b;">Phân bổ Trước lớp - Trong lớp - Sau lớp đối xứng hoạt động GV-SV</span>
-          </div>
-          <div class="article-prompt-card">
-            <div class="article-prompt-header">
-              <span class="article-prompt-title">Prompt 02: Kế Hoạch Bài Dạy 3 Chặng Tích Cực</span>
-              <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P2)}'), 'Đã sao chép Prompt 2!')">
-                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                Sao chép Prompt
-              </button>
-            </div>
-            <pre class="article-prompt-code">${LIB_P2}</pre>
-          </div>
-        </div>
-
-        <!-- Prompt 3 -->
-        <div style="margin-bottom: 22px;">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
-            <h4 style="font-size: 0.92rem; font-weight: 700; color: #1e293b; margin: 0;">3. Thiết Kế Cặp Tình Huống: Ví Dụ Chuẩn & Phản Ví Dụ (Counter-example)</h4>
-            <span style="font-size: 0.8rem; color: #64748b;">Làm rõ ranh giới lý thuyết và xóa bỏ các ngộ nhận phổ biến</span>
-          </div>
-          <div class="article-prompt-card">
-            <div class="article-prompt-header">
-              <span class="article-prompt-title">Prompt 03: Thiết Kế Ví Dụ & Phản Ví Dụ Đối Chiếu</span>
-              <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P3)}'), 'Đã sao chép Prompt 3!')">
-                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                Sao chép Prompt
-              </button>
-            </div>
-            <pre class="article-prompt-code">${LIB_P3}</pre>
-          </div>
-        </div>
-
-        <!-- Prompt 4 -->
-        <div style="margin-bottom: 22px;">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
-            <h4 style="font-size: 0.92rem; font-weight: 700; color: #1e293b; margin: 0;">4. Phân Tầng Nhiệm Vụ Học Tập Theo Năng Lực (Differentiated Instruction)</h4>
-            <span style="font-size: 0.8rem; color: #64748b;">3 tầng nhiệm vụ: Nền tảng (6đ) - Tiêu chuẩn (8đ) - Thử thách mở rộng (10đ)</span>
-          </div>
-          <div class="article-prompt-card">
-            <div class="article-prompt-header">
-              <span class="article-prompt-title">Prompt 04: Phân Tầng Nhiệm Vụ Học Tập</span>
-              <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P4)}'), 'Đã sao chép Prompt 4!')">
-                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                Sao chép Prompt
-              </button>
-            </div>
-            <pre class="article-prompt-code">${LIB_P4}</pre>
-          </div>
-        </div>
-
-        <!-- Prompt 5 -->
-        <div style="margin-bottom: 22px;">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
-            <h4 style="font-size: 0.92rem; font-weight: 700; color: #1e293b; margin: 0;">5. Thiết Kế Bộ Câu Hỏi Chẩn Đoán Đầu Giờ (Diagnostic Pre-test)</h4>
-            <span style="font-size: 0.8rem; color: #64748b;">4 câu hỏi kiểm tra nhanh kiến thức tiên quyết và kích hoạt tò mò</span>
-          </div>
-          <div class="article-prompt-card">
-            <div class="article-prompt-header">
-              <span class="article-prompt-title">Prompt 05: Khảo Sát Chẩn Đoán Đầu Giờ</span>
-              <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P5)}'), 'Đã sao chép Prompt 5!')">
-                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                Sao chép Prompt
-              </button>
-            </div>
-            <pre class="article-prompt-code">${LIB_P5}</pre>
-          </div>
-        </div>
-
-        <!-- Prompt 6 -->
-        <div style="margin-bottom: 22px;">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
-            <h4 style="font-size: 0.92rem; font-weight: 700; color: #1e293b; margin: 0;">6. Lập Phiếu Đúc Kết & Phản Tư Sau Lớp (Post-class Reflection Log)</h4>
-            <span style="font-size: 0.8rem; color: #64748b;">3 điểm sáng, 1 điểm mù, 1 bài toán thực tế mini 15 phút tại nhà</span>
-          </div>
-          <div class="article-prompt-card">
-            <div class="article-prompt-header">
-              <span class="article-prompt-title">Prompt 06: Phiếu Phản Tư & Đúc Kết Tự Học</span>
-              <button class="btn btn-secondary btn-sm" onclick="window.copyTextToClipboard(decodeURIComponent('${encodeURIComponent(LIB_P6)}'), 'Đã sao chép Prompt 6!')">
-                <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                Sao chép Prompt
-              </button>
-            </div>
-            <pre class="article-prompt-code">${LIB_P6}</pre>
-          </div>
-        </div>
-      </section>
-
-      <!-- PHẦN 6: BÀI TẬP THỰC HÀNH TẠI LỚP (70 PHÚT) -->
-      <section class="article-section">
-        <div class="article-section-header">
-          <span class="article-section-tag">PHẦN 6</span>
-          <h2 class="article-section-title">Bài Tập Tình Huống Thực Hành Tại Lớp (70 Phút)</h2>
-        </div>
-        <p class="article-prose">
-          Học viên thực hiện bài tập trực tiếp trên máy tính cá nhân để xây dựng và thẩm định Kế hoạch bài dạy hoàn chỉnh cho một buổi học thật của môn mình giảng dạy:
-        </p>
-
-        <!-- Thẻ Tình huống bài tập -->
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; margin: 16px 0 20px 0; overflow: hidden;">
-          <div style="padding: 12px 18px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: #f8fafc;">
-            <span style="font-weight: 700; color: #1e293b; font-size: 0.95rem;">Đề bài: Thiết Kế Kế Hoạch Bài Dạy (Lesson Plan) 3 Chặng Tích Cực</span>
-            <span style="font-size: 0.8rem; color: #64748b; background: #ffffff; border: 1px solid #cbd5e1; padding: 2px 8px; border-radius: 4px;">Thời lượng: 70 phút</span>
+            <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: #475569; line-height: 1.65;">
+              <li><strong>Nội dung Buổi 4 & Buổi 5 tiếp theo:</strong> <em>"AI Tạo Nội Dung & Slide Bài Giảng Từ SGK Địa Lí 11 Với NotebookLM & Gamma"</em>.</li>
+              <li>Lấy chính Kế hoạch bài dạy Bài 2 vừa hoàn thiện hôm nay làm đầu vào để tự động hóa sinh ra: Dàn ý Slide bài giảng, Phiếu học tập điền khuyết (Handout) và xuất sang Gamma để tạo slide PowerPoint tự động.</li>
+              <li>Giữ sẵn file <code>sach-giao-khoa-dia-li-11-ket-noi-tri-thuc-voi-cuoc-song.pdf</code> trên máy để nạp trực tiếp vào NotebookLM ở các buổi tiếp theo.</li>
+            </ul>
           </div>
 
-          <div style="padding: 16px 18px; font-size: 0.9rem; line-height: 1.6; color: #334155;">
-            <div style="margin-bottom: 10px;">
-              <strong style="color: #0f172a;">Tình huống thực tế:</strong> Thầy/Cô mở Đề cương chi tiết học phần (Syllabus) của môn học mình đang phụ trách trong học kỳ này. Chọn đúng <strong>01 buổi học trọng tâm</strong> (thường là bài học chứa đựng khái niệm phức tạp hoặc sinh viên hay gặp khó khăn nhất khi tiếp thu) để thiết kế kịch bản sư phạm hoàn chỉnh.
-            </div>
-            <div>
-              <strong style="color: #0f172a;">Sản phẩm đầu ra (Deliverable):</strong> 01 File văn bản Kế hoạch bài dạy (Lesson Plan) hoàn chỉnh từ 90 đến 180 phút đáp ứng đủ 4 tiêu chuẩn vàng: (1) Chuẩn đầu ra CLO rõ ràng theo thang Bloom; (2) Có đủ hoạt động Trước lớp - Trong lớp - Sau lớp; (3) Tích hợp 01 tình huống thực tế hoặc phản ví dụ; (4) Giảng viên đã trực tiếp thẩm định, chỉnh sửa lỗi ảo giác của AI.
-            </div>
-          </div>
-        </div>
-
-        <!-- 3 Bước thực hành -->
-        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px;">
-            <div style="font-weight: 700; color: #1e293b; font-size: 0.92rem; margin-bottom: 4px;">
-              Chặng 1 (25 phút): Chuẩn hóa CLO & Thiết lập Khung tiến trình 3 chặng
-            </div>
-            <div style="font-size: 0.86rem; color: #475569; line-height: 1.6;">
-              Dùng Prompt 1 để chuyển hóa các mục tiêu bài học thành 2-3 chuẩn đầu ra CLO theo thang Bloom (tối thiểu đạt Bậc 3 hoặc Bậc 4). Sau đó dùng Prompt 2 để AI phác thảo khung tiến trình 3 chặng sư phạm: Trước lớp - Trong lớp - Sau lớp.
-            </div>
-          </div>
-
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px;">
-            <div style="font-weight: 700; color: #1e293b; font-size: 0.92rem; margin-bottom: 4px;">
-              Chặng 2 (30 phút): Tích hợp Tình huống thực tiễn & Phân tầng độ khó
-            </div>
-            <div style="font-size: 0.86rem; color: #475569; line-height: 1.6;">
-              Dùng Prompt 3 để tạo một Cặp ví dụ chuẩn và Phản ví dụ (Non-example) giúp giải thích điểm ngộ nhận cốt lõi của bài học. Áp dụng Prompt 4 để phân tầng bài tập thực hành trên lớp cho các nhóm sinh viên. Thầy/Cô trực tiếp đọc kỹ, rà soát tính chính xác học thuật và sửa các điểm AI viết chưa sát thực tế Việt Nam.
-            </div>
-          </div>
-
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px;">
-            <div style="font-weight: 700; color: #1e293b; font-size: 0.92rem; margin-bottom: 4px;">
-              Chặng 3 (15 phút): Rà soát chéo đồng đẳng theo Checklist Sư phạm
-            </div>
-            <div style="font-size: 0.86rem; color: #475569; line-height: 1.6;">
-              Đổi máy hoặc chia sẻ màn hình với đồng nghiệp ngồi kế bên. Đánh giá chéo Lesson Plan dựa trên 3 câu hỏi kiểm định:
-              <br>• Sinh viên có bị biến thành người nghe thụ động quá 20 phút không?
-              <br>• Hoạt động thực hành trong lớp có thực sự đo lường được chuẩn đầu ra CLO đã đề ra không?
-              <br>• Các tình huống và số liệu đã được giảng viên kiểm chứng an toàn học thuật chưa?
-            </div>
-          </div>
-        </div>
-
-        <!-- Khung chuẩn bị cho buổi 4 -->
-        <div style="padding: 12px 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.86rem; color: #334155; line-height: 1.6;">
-          <strong>Chuẩn bị cho Buổi 4 (AI Tạo Nội Dung Giảng Dạy & Bộ Học Liệu Có Cấu Trúc):</strong> Thầy/Cô giữ lại Kế hoạch bài dạy vừa hoàn thành để làm đầu vào cho Buổi 4, nơi chúng ta sẽ dùng AI để tự động hóa việc xuất bản đồng bộ: Dàn ý Slide bài giảng, Tài liệu phát tay (Handout), Ngân hàng câu hỏi FAQ và Bài đọc chuyên sâu.
         </div>
       </section>
 
@@ -534,15 +740,25 @@ NHIỆM VỤ: Hãy soạn thảo phiếu phản tư ngắn gọn gồm 4 phần:
   const session3Data = {
     id: 3,
     number: 3,
-    title: "Buổi 3: AI Thiết Kế Bài Giảng & Học Phần (Lesson Plan)",
+    title: "Buổi 3: AI Thiết Kế Bài Giảng Và Học Phần",
     topic: "Thiết kế Bài giảng & Học phần",
     tools: ["ChatGPT", "Gemini", "NotebookLM"],
     duration: "180 phút (3 giờ)",
-    deliverable: "01 Kế hoạch bài dạy (Lesson Plan) hoàn chỉnh cho một buổi học thật chuẩn mô hình 3 chặng tích cực",
-    overview: "Ứng dụng GenAI chuẩn hóa Chuẩn đầu ra (CLO) theo Thang đo Bloom sửa đổi, ánh xạ ma trận liên kết tương thích (Constructive Alignment) và kiến tạo kịch bản sư phạm 3 chặng (Trước - Trong - Sau lớp). Tích hợp tình huống thực tiễn, phản ví dụ đối chiếu và phân tầng năng lực người học.",
+    deliverable: "01 Kế hoạch bài dạy Bài 2 SGK Địa Lí 11 hoàn chỉnh theo tiến trình 4 hoạt động khám phá",
+    overview: "Thực hành dùng AI thiết kế bài dạy hoàn chỉnh dựa trên Sách Giáo Khoa Địa Lí 11 (Bộ Kết Nối Tri Thức Với Cuộc Sống) — Trọng tâm là Bài 2: Toàn cầu hoá và khu vực hoá kinh tế (Trang 9 – 12).",
     articleHtml: articleHtml,
-    objectives: [],
-    timeline: [],
+    objectives: [
+      "1. Kiến thức: Nắm vững nguyên tắc ăn khớp giữa mục tiêu, hoạt động học và đề kiểm tra trên bài mẫu SGK Địa lí 11.",
+      "2. Năng lực: Làm chủ kỹ năng Prompt Engineering chuyển hóa nội dung SGK Địa lí 11 thành mục tiêu hành động và bài tập phân tầng.",
+      "3. Phẩm chất: Đề cao tính cẩn thận đối chiếu số liệu SGK, trung thực và tinh thần trách nhiệm với người học."
+    ],
+    timeline: [
+      { time: "00 - 15p", title: "Hoạt động 1: Khởi động (Tạo tình huống xuất phát)", desc: "So sánh câu lệnh thô (1 dòng) vs Câu lệnh chuẩn đầy đủ trên Bài 2 SGK Địa lí 11." },
+      { time: "15 - 65p", title: "Hoạt động 2: Khám phá kiến thức mới", desc: "4 bước: Giao việc -> Học sinh làm -> Báo cáo thảo luận -> Chốt kiến thức & Bàn giao 6 câu lệnh mẫu cho SGK Địa lí 11." },
+      { time: "65 - 145p", title: "Hoạt động 3: Luyện tập tại lớp", desc: "Mở file SGK Địa lí 11 (Bài 2), tự tay dùng AI soạn 01 Kế hoạch bài dạy hoàn chỉnh và đối chiếu số liệu thật." },
+      { time: "145 - 175p", title: "Hoạt động 4: Vận dụng / Mở rộng", desc: "Đổi bài kiểm tra chéo theo bảng kiểm tra 4 câu hỏi thực tế." },
+      { time: "175 - 180p", title: "IV. Hướng dẫn về nhà & Dặn dò", desc: "Hoàn thiện bài dạy, chuẩn bị học liệu đầu vào cho Buổi 4 và Buổi 5." }
+    ],
     blocks: []
   };
 
