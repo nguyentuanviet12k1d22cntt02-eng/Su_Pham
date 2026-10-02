@@ -10,7 +10,7 @@ Hệ thống học liệu & kịch bản sư phạm số hóa 16 buổi dành ch
 - **Buổi 2**: Prompt Engineering Cho Giảng Viên Đại Học (Công thức CRTC-OE)
 - **Buổi 3**: AI Thiết Kế Bài Giảng & Học Phần (Mô hình Constructive Alignment & 3 Chặng)
 - **Buổi 4**: Dùng AI Tạo Trọn Bộ Tài Liệu Bài Giảng (Slide, Handout điền khuyết, Case Study, FAQ)
-- **Buổi 5**: Ứng Dụng Tạo Slide Bài Giảng Với NotebookLM & Gamma (Thực hành trên SGK Địa Lí 11)
+- **Buổi 5**: Làm Chủ NotebookLM: Tóm Tắt Học Liệu, Xây Dựng Giáo Án, Soạn Slide & Mô Tả Phong Cách Hình Ảnh (Thực hành SGK Địa Lí 11 - Bài 19: Kinh tế Hoa Kỳ)
 - **Buổi 6**: Thiết Kế Trợ Lý Gia Sư AI (AI Tutor) Hỗ Trợ Sinh Viên (Phương pháp Socrates)
 - **Buổi 7**: Thiết Kế Bài Tập & Đánh Giá Trong Thời Đại GenAI (Đánh giá quá trình - Process-based)
 - **Buổi 8**: Thiết Kế Rubric & Quy Trình Nhận Xét Tự Động (Assessment Workflow)
@@ -24,12 +24,19 @@ Hệ thống học liệu & kịch bản sư phạm số hóa 16 buổi dành ch
    - Tích hợp thang đo nhận thức Bloom cải tiến (2001) và tam giác căn chỉnh sư phạm (Constructive Alignment).
    - Thiết kế giao diện học thuật sang trọng, không sử dụng icon/emoji AI Slop generic.
 
-2. **Quy Trình Thực Chiến 3 Công Cụ (Buổi 5)**:
-   - **Google NotebookLM**: Nạp trực tiếp Sách Giáo Khoa PDF (171 trang) để đọc hiểu và trích xuất Dàn ý có dẫn chứng số trang chính xác 100%.
-   - **ChatGPT**: Đóng vai Art Director & Instructional Designer để viết Siêu Prompt (Master Prompt) kèm phong cách tạo ảnh AI (*Image Prompts*).
-   - **Gamma App**: Tự động sinh bộ Slide PowerPoint (.pptx) mỹ thuật cao trong 60 giây.
+2. **Khai Thác Toàn Diện Google NotebookLM (Buổi 5)**:
+   - **Khóa Nguồn Tri Thức (Source-grounded AI)**: Nạp trực tiếp Sách Giáo Khoa PDF (171 trang) để đọc hiểu và trích xuất Dàn ý có dẫn chứng số trang chính xác 100% cho Bài 19: Kinh tế Hoa Kỳ.
+   - **Xây Dựng Kế Hoạch Bài Dạy Chuẩn Sư Phạm**: Tự động chuyển đổi tài liệu nạp thành giáo án 4 hoạt động bài bản.
+   - **Thiết Kế Slide & Art Direction**: Biên soạn 8 slide súc tích theo quy tắc 3 dòng kèm Speaker Notes đời thường, định hình Cẩm nang phong cách hình ảnh đồng bộ (Visual Style Guide) và viết câu lệnh tạo ảnh AI chi tiết cho từng slide.
+   - **Audio Overview Podcast & Notebook Guide**: Tạo bản thảo luận âm thanh 2 chuyên gia AI thảo luận sâu về bài học, xuất đề cương Study Guide và bảng hỏi FAQ tự động.
 
-3. **Học Liệu & Dữ Liệu Thực Hành Tích Hợp**:
+3. **Thiết Kế Trợ Lý Gia Sư AI Socrates (Buổi 6)**:
+   - **Xóa Bỏ Bẫy Lười Chép Bài**: Lập trình Custom AI Tutor trên ChatGPT Free / Gemini Gems với nguyên tắc vàng: Tuyệt đối không bao giờ giải hộ.
+   - **Kỹ Thuật Đặt Câu Hỏi Bậc Thang (Scaffolding)**: Dẫn dắt học sinh tự đọc hiểu SGK và đối chiếu bảng số liệu để tự tìm ra đáp án.
+   - **Bộ Khiên Phòng Vệ 5 Lớp**: Vô hiệu hóa các chiêu trò nài nỉ ("Nói đáp án đi", "Mai thi rồi"), tự ti ("Em dốt lắm") hoặc đoán mò.
+   - **Kiểm Thử Chịu Tải & Voice Mode**: Tương tác đàm thoại giọng nói 1-1 giúp học sinh tự học tại nhà như có gia sư riêng 24/7.
+
+4. **Học Liệu & Dữ Liệu Thực Hành Tích Hợp**:
    - Đính kèm file gốc **Sách Giáo Khoa Địa Lí 11 (Bộ Kết Nối Tri Thức Với Cuộc Sống)** trực tiếp trên nền tảng.
    - Kho bài mẫu tiểu luận 3 mức độ, đề cương chi tiết học phần, 40 câu hỏi trắc nghiệm chẩn đoán.
 

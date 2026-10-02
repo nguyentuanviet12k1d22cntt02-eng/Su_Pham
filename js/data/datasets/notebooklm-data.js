@@ -74,7 +74,7 @@ Công nghệ AI, đặc biệt là các mô hình nạp dữ liệu nguồn như
     title: "Sách Giáo Khoa Địa Lí 11 — Bộ Kết Nối Tri Thức Với Cuộc Sống (PDF Gốc)",
     category: "Sách giáo khoa & Giáo trình",
     author: "PGS.TS. Lê Huỳnh, Nguyễn Thị Vũ Hà (NXB Giáo Dục Việt Nam)",
-    description: "Tài liệu mẫu chuẩn 171 trang PDF (dung lượng 30MB) phục vụ thực hành Buổi 5: Tải về nạp trực tiếp vào Google NotebookLM để trích xuất Dàn ý Slide 8 trang Bài 2 (Toàn cầu hoá kinh tế), bảng số liệu và câu hỏi thảo luận nhóm.",
+    description: "Tài liệu mẫu chuẩn 171 trang PDF (dung lượng 30MB) phục vụ thực hành Buổi 5: Tải về nạp trực tiếp vào Google NotebookLM để tóm tắt học liệu, soạn giáo án, trích xuất 8 slide kèm mô tả phong cách hình ảnh và xuất Podcast Audio Overview cho Bài 19: Kinh tế Hoa Kỳ (Trang 88 – 96).",
     wordCount: "171 trang (30MB)",
     downloadUrl: "sach-giao-khoa-dia-li-11-ket-noi-tri-thuc-voi-cuoc-song.pdf",
     content: `# SÁCH GIÁO KHOA ĐỊA LÍ 11 — KẾT NỐI TRI THỨC VỚI CUỘC SỐNG
@@ -84,18 +84,26 @@ Nhà xuất bản: Nhà xuất bản Giáo dục Việt Nam
 
 TÀI LIỆU DÙNG THỰC HÀNH TẠI BUỔI 5:
 - File PDF này chứa đầy đủ 31 bài học của chương trình Địa lí 11 mới.
-- Trọng tâm thực hành Buổi 5: "Bài 2: Toàn cầu hoá và khu vực hoá kinh tế" (Trang 9 – 12).
-- Các chủ đề khác có thể khai thác:
+- TRỌNG TÂM THỰC HÀNH BUỔI 5: "Bài 19: Kinh tế Hoa Kỳ" (Trang 88 – 96).
+  + Quy mô GDP, GDP/người, vị thế kinh tế số 1 thế giới và nguyên nhân phát triển.
+  + Đặc điểm 3 ngành kinh tế: Nông nghiệp hiện đại, Công nghiệp đỉnh cao (Silicon Valley, Sun Belt), Dịch vụ dẫn dắt (Wall Street).
+  + Sự phân hóa lãnh thổ kinh tế 4 vùng (Đông Bắc, Trung Tây, Phía Nam, Phía Tây).
+- Các chủ đề mở rộng khác có thể khai thác:
+  + Bài 2: Toàn cầu hoá và khu vực hoá kinh tế (Trang 9 – 12)
   + Bài 6 & 7: Địa lí khu vực Mỹ La-tinh (Trang 22 - 34)
   + Bài 9: Liên minh châu Âu (EU) (Trang 37 - 43)
   + Bài 11 & 12: Địa lí khu vực Đông Nam Á (Trang 46 - 60)
-  + Bài 18 & 19: Hợp chủng quốc Hoa Kỳ (Trang 81 - 96)
   + Bài 23 & 24: Nhật Bản (Trang 114 - 128)
   + Bài 26 & 27: Trung Quốc (Trang 131 - 147)
 
-HƯỚNG DẪN THỰC HÀNH:
+HƯỚNG DẪN THỰC HÀNH BUỔI 5:
 1. Bấm nút "Tải file" để tải file PDF này về máy tính.
-2. Mở https://notebooklm.google.com/ và kéo thả file PDF này vào một Notebook mới.
-3. Sử dụng các câu lệnh mẫu tại Buổi 5 để chiết xuất Dàn ý Slide và dán vào Gamma App.`
+2. Mở https://notebooklm.google.com/ và tải file PDF này vào một Notebook mới.
+3. Sử dụng bộ 5 câu lệnh mẫu tại Buổi 5 để:
+   - Tóm tắt học liệu toàn diện có trích dẫn số trang (Citations).
+   - Thiết kế Kế hoạch bài dạy (Giáo án) 45 phút chuẩn sư phạm.
+   - Biên soạn 8 slide súc tích kèm Speaker Notes theo quy tắc 3 dòng.
+   - Thiết kế Phong cách hình ảnh đồng bộ (Visual Art Style) & Prompt tạo ảnh AI chi tiết cho từng slide.
+   - Tạo Audio Overview (Podcast 2 host AI), Study Guide & bộ câu hỏi FAQ.`
   });
 })();
