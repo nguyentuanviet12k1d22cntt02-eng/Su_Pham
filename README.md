@@ -30,13 +30,7 @@ Hệ thống học liệu & kịch bản sư phạm số hóa 16 buổi dành ch
    - **Thiết Kế Slide & Art Direction**: Biên soạn 8 slide súc tích theo quy tắc 3 dòng kèm Speaker Notes đời thường, định hình Cẩm nang phong cách hình ảnh đồng bộ (Visual Style Guide) và viết câu lệnh tạo ảnh AI chi tiết cho từng slide.
    - **Audio Overview Podcast & Notebook Guide**: Tạo bản thảo luận âm thanh 2 chuyên gia AI thảo luận sâu về bài học, xuất đề cương Study Guide và bảng hỏi FAQ tự động.
 
-3. **Thiết Kế Trợ Lý Gia Sư AI Socrates (Buổi 6)**:
-   - **Xóa Bỏ Bẫy Lười Chép Bài**: Lập trình Custom AI Tutor trên ChatGPT Free / Gemini Gems với nguyên tắc vàng: Tuyệt đối không bao giờ giải hộ.
-   - **Kỹ Thuật Đặt Câu Hỏi Bậc Thang (Scaffolding)**: Dẫn dắt học sinh tự đọc hiểu SGK và đối chiếu bảng số liệu để tự tìm ra đáp án.
-   - **Bộ Khiên Phòng Vệ 5 Lớp**: Vô hiệu hóa các chiêu trò nài nỉ ("Nói đáp án đi", "Mai thi rồi"), tự ti ("Em dốt lắm") hoặc đoán mò.
-   - **Kiểm Thử Chịu Tải & Voice Mode**: Tương tác đàm thoại giọng nói 1-1 giúp học sinh tự học tại nhà như có gia sư riêng 24/7.
-
-4. **Học Liệu & Dữ Liệu Thực Hành Tích Hợp**:
+3. **Học Liệu & Dữ Liệu Thực Hành Tích Hợp**:
    - Đính kèm file gốc **Sách Giáo Khoa Địa Lí 11 (Bộ Kết Nối Tri Thức Với Cuộc Sống)** trực tiếp trên nền tảng.
    - Kho bài mẫu tiểu luận 3 mức độ, đề cương chi tiết học phần, 40 câu hỏi trắc nghiệm chẩn đoán.
 
